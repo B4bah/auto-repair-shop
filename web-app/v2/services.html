@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Услуги — АвтоФикс</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Open+Sans:wght@400;600&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/services.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+
+<!-- ══ НАВИГАЦИЯ ══ -->
+<nav class="topnav">
+  <a href="index.html" class="nav-brand"><span>Авто</span>Фикс</a>
+  <div class="nav-links">
+    <a href="index.html">Главная</a>
+    <a href="services.html" class="active">Услуги</a>
+    <a href="parts.html">Запчасти</a>
+    <a href="branches.html">Филиалы</a>
+    <a href="about.html">О нас</a>
+  </div>
+  <button class="hamburger" onclick="toggleMenu()">☰</button>
+</nav>
+
+<div id="mob-menu">
+  <a href="index.html"    onclick="toggleMenu()">Главная</a>
+  <a href="services.html" onclick="toggleMenu()">Услуги</a>
+  <a href="parts.html"    onclick="toggleMenu()">Запчасти</a>
+  <a href="branches.html" onclick="toggleMenu()">Филиалы</a>
+  <a href="about.html"    onclick="toggleMenu()">О нас</a>
+</div>
+
+<div class="page">
+
+  <!-- ══ PAGE HEADER ══ -->
+  <div class="page-header">
+    <h1>Услуги и цены</h1>
+    <p>Полный перечень работ с фиксированными ценами</p>
+  </div>
+
+  <!-- ══ ХЛЕБНЫЕ КРОШКИ ══ -->
+  <div class="breadcrumb">
+    <a href="index.html">Главная</a> / Услуги
+  </div>
+
+  <!-- ══ ТОРМОЗНАЯ СИСТЕМА ══ -->
+  <section class="sec sec-main">
+    <div class="sec-inner">
+
+      <div class="cat-header">
+        <div class="cat-icon">🔧</div>
+        <div>
+          <h2>Тормозная система</h2>
+          <p>Диагностика, замена и ремонт тормозных компонентов</p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div class="srv-left">
+          <div class="srv-dot"></div>
+          <div>
+            <div class="srv-name">Замена тормозных колодок (передние)</div>
+            <div class="srv-duration">⏱ 30–45 мин</div>
+          </div>
+        </div>
+        <div class="srv-right">
+          <span class="srv-price">2 000 ₽</span>
+          <a href="branches.html" class="btn-sm">Записаться</a>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div class="srv-left">
+          <div class="srv-dot"></div>
+          <div>
+            <div class="srv-name">Замена тормозных колодок (задние)</div>
+            <div class="srv-duration">⏱ 30–45 мин</div>
+          </div>
+        </div>
+        <div class="srv-right">
+          <span class="srv-price">2 000 ₽</span>
+          <a href="branches.html" class="btn-sm">Записаться</a>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div class="srv-left">
+          <div class="srv-dot"></div>
+          <div>
+            <div class="srv-name">Замена тормозных дисков (передние)</div>
+            <div class="srv-duration">⏱ 1–1.5 ч</div>
+          </div>
+        </div>
+        <div class="srv-right">
+          <span class="srv-price">3 500 ₽</span>
+          <a href="branches.html" class="btn-sm">Записаться</a>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div class="srv-left">
+          <div class="srv-dot"></div>
+          <div>
+            <div class="srv-name">Замена тормозных дисков (задние)</div>
+            <div class="srv-duration">⏱ 1–1.5 ч</div>
+          </div>
+        </div>
+        <div class="srv-right">
+          <span class="srv-price">3 500 ₽</span>
+          <a href="branches.html" class="btn-sm">Записаться</a>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div class="srv-left">
+          <div class="srv-dot"></div>
+          <div>
+            <div class="srv-name">Диагностика тормозной системы</div>
+            <div class="srv-duration">⏱ 20–30 мин</div>
+          </div>
+        </div>
+        <div class="srv-right">
+          <span class="srv-price">500 ₽</span>
+          <a href="branches.html" class="btn-sm">Записаться</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ ХОДОВАЯ ЧАСТЬ ══ -->
+  <section class="sec sec-alt">
+    <div class="sec-inner">
+
+      <div class="cat-header">
+        <div class="cat-icon">⚙️</div>
+        <div>
+          <h2>Ходовая часть</h2>
+          <p>Замена и ремонт элементов подвески и рулевого управления</p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div class="srv-left">
+          <div class="srv-dot"></div>
+          <div>
+            <div class="srv-name">Замена амортизаторов (передние)</div>
+            <div class="srv-duration">⏱ 1.5–2 ч</div>
+          </div>
+        </div>
+        <div class="srv-right">
+          <span class="srv-price">4 000 ₽</span>
+          <a href="branches.html" class="btn-sm">Записаться</a>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div class="srv-left">
+          <div class="srv-dot"></div>
+          <div>
+            <div class="srv-name">Замена амортизаторов (задние)</div>
+            <div class="srv-duration">⏱ 1–1.5 ч</div>
+          </div>
+        </div>
+        <div class="srv-right">
+          <span class="srv-price">3 500 ₽</span>
+          <a href="branches.html" class="btn-sm">Записаться</a>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div class="srv-left">
+          <div class="srv-dot"></div>
+          <div>
+            <div class="srv-name">Замена ступичного подшипника</div>
+            <div class="srv-duration">⏱ 1–2 ч</div>
+          </div>
+        </div>
+        <div class="srv-right">
+          <span class="srv-price">3 000 ₽</span>
+          <a href="branches.html" class="btn-sm">Записаться</a>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div class="srv-left">
+          <div class="srv-dot"></div>
+          <div>
+            <div class="srv-name">Замена ремня ГРМ</div>
+            <div class="srv-duration">⏱ 2–4 ч</div>
+          </div>
+        </div>
+        <div class="srv-right">
+          <span class="srv-price">5 000 ₽</span>
+          <a href="branches.html" class="btn-sm">Записаться</a>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div class="srv-left">
+          <div class="srv-dot"></div>
+          <div>
+            <div class="srv-name">Развал-схождение</div>
+            <div class="srv-duration">⏱ 30–60 мин</div>
+          </div>
+        </div>
+        <div class="srv-right">
+          <span class="srv-price">1 500 ₽</span>
+          <a href="branches.html" class="btn-sm">Записаться</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ ТЕХНИЧЕСКОЕ ОБСЛУЖИВАНИЕ ══ -->
+  <section class="sec sec-main">
+    <div class="sec-inner">
+
+      <div class="cat-header">
+        <div class="cat-icon">🛢️</div>
+        <div>
+          <h2>Техническое обслуживание</h2>
+          <p>Плановые работы для поддержания автомобиля в отличном состоянии</p>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <span style="font-size:1.1rem;">ℹ️</span>
+        <p>При комплексном ТО (масло + масляный фильтр + воздушный фильтр + свечи) — скидка 10%.</p>
+      </div>
+
+      <div class="service-row">
+        <div class="srv-left">
+          <div class="srv-dot"></div>
+          <div>
+            <div class="srv-name">Замена моторного масла</div>
+            <div class="srv-duration">⏱ 20–30 мин</div>
+          </div>
+        </div>
+        <div class="srv-right">
+          <span class="srv-price">800 ₽</span>
+          <a href="branches.html" class="btn-sm">Записаться</a>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div class="srv-left">
+          <div class="srv-dot"></div>
+          <div>
+            <div class="srv-name">Замена масляного фильтра</div>
+            <div class="srv-duration">⏱ 10–15 мин</div>
+          </div>
+        </div>
+        <div class="srv-right">
+          <span class="srv-price">300 ₽</span>
+          <a href="branches.html" class="btn-sm">Записаться</a>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div class="srv-left">
+          <div class="srv-dot"></div>
+          <div>
+            <div class="srv-name">Замена воздушного фильтра</div>
+            <div class="srv-duration">⏱ 10 мин</div>
+          </div>
+        </div>
+        <div class="srv-right">
+          <span class="srv-price">300 ₽</span>
+          <a href="branches.html" class="btn-sm">Записаться</a>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div class="srv-left">
+          <div class="srv-dot"></div>
+          <div>
+            <div class="srv-name">Замена свечей зажигания</div>
+            <div class="srv-duration">⏱ 30–45 мин</div>
+          </div>
+        </div>
+        <div class="srv-right">
+          <span class="srv-price">1 200 ₽</span>
+          <a href="branches.html" class="btn-sm">Записаться</a>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div class="srv-left">
+          <div class="srv-dot"></div>
+          <div>
+            <div class="srv-name">Комплексная компьютерная диагностика</div>
+            <div class="srv-duration">⏱ 40–60 мин</div>
+          </div>
+        </div>
+        <div class="srv-right">
+          <span class="srv-price">1 000 ₽</span>
+          <a href="branches.html" class="btn-sm">Записаться</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ CTA ══ -->
+  <div style="background:var(--bg-2); border-top:1px solid var(--border);
+              text-align:center; padding:4rem 1.5rem;">
+    <h2 style="text-transform:uppercase; letter-spacing:1px; margin:0 0 .8rem;">
+      Не нашли нужную услугу?
+    </h2>
+    <p style="margin:0 0 2rem;">Позвоните нам или приезжайте — разберёмся с любой задачей.</p>
+    <a href="branches.html" class="btn-green">Контакты филиалов</a>
+  </div>
+
+  <!-- ══ ФУТЕР ══ -->
+  <footer>
+    <div class="sec-inner">
+      <div class="w3-row-padding">
+        <div class="w3-col l4 m6 s12 w3-margin-bottom">
+          <div class="footer-brand"><span>Авто</span>Фикс</div>
+          <p>Профессиональный ремонт и обслуживание автомобилей.<br>Ежедневно с 8:00 до 20:00.</p>
+        </div>
+        <div class="w3-col l4 m6 s12 w3-margin-bottom">
+          <h4>Навигация</h4>
+          <a href="index.html"    class="flink">Главная</a>
+          <a href="services.html" class="flink">Услуги</a>
+          <a href="parts.html"    class="flink">Запчасти</a>
+          <a href="branches.html" class="flink">Филиалы</a>
+          <a href="about.html"    class="flink">О нас</a>
+        </div>
+        <div class="w3-col l4 m12 s12 w3-margin-bottom">
+          <h4>Наши адреса</h4>
+          <p>
+            📍 Москва, ул. Ленина, 5<br>
+            📍 Москва, ул. Мира, 12<br>
+            📍 Санкт-Петербург, Большой пр., 33
+          </p>
+        </div>
+      </div>
+    </div>
+    <p class="footer-copy">© 2026 АвтоФикс. Все права защищены.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>

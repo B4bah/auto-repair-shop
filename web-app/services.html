@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Услуги — АвтоФикс</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Open+Sans:wght@400;600&display=swap">
+  <style>
+    :root {
+      --bg:        #0d1117;
+      --bg-2:      #161b22;
+      --bg-3:      #21262d;
+      --border:    #30363d;
+      --text:      #e6edf3;
+      --muted:     #8b949e;
+      --subtle:    #6e7681;
+      --green:     #238636;
+      --green-h:   #2ea043;
+      --green-dim: rgba(35,134,54,0.15);
+      --blue:      #58a6ff;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body {
+      background: var(--bg) !important;
+      color: var(--text) !important;
+      font-family: 'Open Sans', sans-serif !important;
+      margin: 0; padding: 0;
+    }
+    h1, h2, h3, h4 { font-family: 'Oswald', sans-serif; color: var(--text); }
+    p { color: var(--muted); line-height: 1.75; }
+
+    .w3-row, .w3-row-padding,
+    .w3-row-padding > [class*="w3-col"],
+    .w3-container { background: transparent !important; }
+
+    /* ══ Навигация ══ */
+    nav.topnav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: var(--bg-2) !important;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 1.2rem; height: 52px;
+    }
+    .nav-brand {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.3rem; letter-spacing: 1px;
+      color: var(--text); text-decoration: none;
+    }
+    .nav-brand span { color: var(--green-h); }
+    .nav-links { display: flex; gap: 2px; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none;
+      padding: 6px 12px; border-radius: 6px;
+      font-size: .9rem; transition: color .15s, background .15s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); background: var(--bg-3); }
+    .hamburger {
+      display: none; background: none; border: none;
+      color: var(--muted); font-size: 1.4rem; cursor: pointer; padding: 4px 8px;
+    }
+    #mob-menu {
+      display: none; flex-direction: column;
+      position: fixed; top: 52px; left: 0; right: 0; z-index: 199;
+      background: var(--bg-2); border-bottom: 1px solid var(--border);
+    }
+    #mob-menu.open { display: flex; }
+    #mob-menu a {
+      color: var(--muted); text-decoration: none;
+      padding: 13px 20px; border-bottom: 1px solid var(--border);
+      font-size: .95rem; transition: color .15s, background .15s;
+    }
+    #mob-menu a:hover { color: var(--text); background: var(--bg-3); }
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+    }
+
+    .page { margin-top: 52px; }
+
+    /* ══ Page Header ══ */
+    .page-header {
+      background: var(--bg-2);
+      border-bottom: 1px solid var(--border);
+      padding: 3rem 1.5rem;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .page-header::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 50% 100%, var(--green-dim), transparent 70%);
+      pointer-events: none;
+    }
+    .page-header h1 {
+      font-size: clamp(1.6rem, 4vw, 2.5rem);
+      text-transform: uppercase; letter-spacing: 2px; margin: 0 0 .6rem;
+      position: relative;
+    }
+    .page-header p { position: relative; margin: 0; font-size: .95rem; }
+
+    /* ══ Хлебные крошки ══ */
+    .breadcrumb {
+      padding: .8rem 1.5rem;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      font-size: .83rem; color: var(--subtle);
+    }
+    .breadcrumb a { color: var(--blue); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+
+    /* ══ Контент ══ */
+    .sec-inner { max-width: 1100px; margin: 0 auto; }
+    .sec { padding: 4rem 1.5rem; border-bottom: 1px solid var(--border); }
+    .sec-alt  { background: var(--bg-2); }
+    .sec-main { background: var(--bg); }
+
+    /* ══ Категория ══ */
+    .cat-header {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 1.5rem;
+    }
+    .cat-icon {
+      font-size: 2rem;
+      background: var(--bg-3);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      width: 54px; height: 54px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .cat-header h2 {
+      text-transform: uppercase; letter-spacing: 1px;
+      font-size: 1.4rem; margin: 0 0 .2rem;
+    }
+    .cat-header p { margin: 0; font-size: .88rem; }
+
+    /* ══ Строка услуги ══ */
+    .service-row {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 1.4rem;
+      margin-bottom: 8px;
+      gap: 1rem;
+      transition: border-color .15s;
+      flex-wrap: wrap;
+    }
+    .service-row:hover { border-color: var(--green); }
+    .service-row:last-child { margin-bottom: 0; }
+
+    .srv-left { display: flex; align-items: center; gap: 12px; flex: 1; min-width: 0; }
+    .srv-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--green); flex-shrink: 0;
+    }
+    .srv-name { font-size: .95rem; color: var(--text); }
+    .srv-duration { font-size: .8rem; color: var(--subtle); margin-top: 2px; }
+
+    .srv-right { display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
+    .srv-price { color: var(--green-h); font-weight: 600; font-size: 1rem; font-family: 'Oswald', sans-serif; }
+
+    .btn-sm {
+      background: var(--bg-3); color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 5px 14px; border-radius: 6px;
+      font-size: .82rem; text-decoration: none;
+      transition: color .15s, border-color .15s;
+      white-space: nowrap;
+    }
+    .btn-sm:hover { color: var(--text); border-color: var(--text); }
+
+    /* ══ Инфо-блок ══ */
+    .info-box {
+      background: rgba(35,134,54,.08);
+      border: 1px solid rgba(46,160,67,.3);
+      border-radius: 8px;
+      padding: 1rem 1.4rem;
+      display: flex; gap: 10px; align-items: flex-start;
+      margin-bottom: 2rem;
+    }
+    .info-box p { margin: 0; font-size: .88rem; color: var(--muted); }
+
+    /* ══ Кнопки ══ */
+    .btn-green {
+      background: var(--green); color: #fff;
+      border: 1px solid rgba(240,246,252,.1);
+      padding: 10px 28px; border-radius: 6px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem; letter-spacing: 1px; text-transform: uppercase;
+      text-decoration: none; transition: background .15s; display: inline-block;
+    }
+    .btn-green:hover { background: var(--green-h); }
+
+    /* ══ Футер ══ */
+    footer { background: var(--bg-2) !important; padding: 2.5rem 1.5rem 0; }
+    footer h4 {
+      color: var(--text); text-transform: uppercase;
+      letter-spacing: 1px; font-size: .85rem; margin: 0 0 .8rem;
+    }
+    footer p { font-size: .88rem; margin: 0; line-height: 2.1; }
+    .footer-brand { font-family: 'Oswald', sans-serif; font-size: 1.2rem; margin-bottom: .8rem; }
+    .footer-brand span { color: var(--green-h); }
+    .flink {
+      display: block; color: var(--muted); text-decoration: none;
+      font-size: .88rem; padding: 3px 0; transition: color .15s;
+    }
+    .flink:hover { color: var(--blue); }
+    .footer-copy {
+      text-align: center; color: var(--subtle); font-size: .78rem;
+      padding: 1.5rem 0; border-top: 1px solid var(--border); margin-top: 2rem;
+    }
+    .w3-margin-bottom { margin-bottom: 16px !important; }
+  </style>
+</head>
+<body>
+
+<!-- ══ НАВИГАЦИЯ ══ -->
+<nav class="topnav">
+  <a href="index.html" class="nav-brand"><span>Авто</span>Фикс</a>
+  <div class="nav-links">
+    <a href="index.html">Главная</a>
+    <a href="services.html" class="active">Услуги</a>
+    <a href="parts.html">Запчасти</a>
+    <a href="branches.html">Филиалы</a>
+    <a href="about.html">О нас</a>
+  </div>
+  <button class="hamburger" onclick="toggleMenu()">☰</button>
+</nav>
+
+<div id="mob-menu">
+  <a href="index.html"    onclick="toggleMenu()">Главная</a>
+  <a href="services.html" onclick="toggleMenu()">Услуги</a>
+  <a href="parts.html"    onclick="toggleMenu()">Запчасти</a>
+  <a href="branches.html" onclick="toggleMenu()">Филиалы</a>
+  <a href="about.html"    onclick="toggleMenu()">О нас</a>
+</div>
+
+<div class="page">
+
+  <!-- ══ PAGE HEADER ══ -->
+  <div class="page-header">
+    <h1>Услуги и цены</h1>
+    <p>Полный перечень работ с фиксированными ценами</p>
+  </div>
+
+  <!-- ══ ХЛЕБНЫЕ КРОШКИ ══ -->
+  <div class="breadcrumb">
+    <a href="index.html">Главная</a> / Услуги
+  </div>
+
+  <!-- ══ ТОРМОЗНАЯ СИСТЕМА ══ -->
+  <section class="sec sec-main">
+    <div class="sec-inner">
+
+      <div class="cat-header">
+        <div class="cat-icon">🔧</div>
+        <div>
+          <h2>Тормозная система</h2>
+          <p>Диагностика, замена и ремонт тормозных компонентов</p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div class="srv-left">
+          <div class="srv-dot"></div>
+          <div>
+            <div class="srv-name">Замена тормозных колодок (передние)</div>
+            <div class="srv-duration">⏱ 30–45 мин</div>
+          </div>
+        </div>
+        <div class="srv-right">
+          <span class="srv-price">2 000 ₽</span>
+          <a href="branches.html" class="btn-sm">Записаться</a>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div class="srv-left">
+          <div class="srv-dot"></div>
+          <div>
+            <div class="srv-name">Замена тормозных колодок (задние)</div>
+            <div class="srv-duration">⏱ 30–45 мин</div>
+          </div>
+        </div>
+        <div class="srv-right">
+          <span class="srv-price">2 000 ₽</span>
+          <a href="branches.html" class="btn-sm">Записаться</a>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div class="srv-left">
+          <div class="srv-dot"></div>
+          <div>
+            <div class="srv-name">Замена тормозных дисков (передние)</div>
+            <div class="srv-duration">⏱ 1–1.5 ч</div>
+          </div>
+        </div>
+        <div class="srv-right">
+          <span class="srv-price">3 500 ₽</span>
+          <a href="branches.html" class="btn-sm">Записаться</a>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div class="srv-left">
+          <div class="srv-dot"></div>
+          <div>
+            <div class="srv-name">Замена тормозных дисков (задние)</div>
+            <div class="srv-duration">⏱ 1–1.5 ч</div>
+          </div>
+        </div>
+        <div class="srv-right">
+          <span class="srv-price">3 500 ₽</span>
+          <a href="branches.html" class="btn-sm">Записаться</a>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div class="srv-left">
+          <div class="srv-dot"></div>
+          <div>
+            <div class="srv-name">Диагностика тормозной системы</div>
+            <div class="srv-duration">⏱ 20–30 мин</div>
+          </div>
+        </div>
+        <div class="srv-right">
+          <span class="srv-price">500 ₽</span>
+          <a href="branches.html" class="btn-sm">Записаться</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ ХОДОВАЯ ЧАСТЬ ══ -->
+  <section class="sec sec-alt">
+    <div class="sec-inner">
+
+      <div class="cat-header">
+        <div class="cat-icon">⚙️</div>
+        <div>
+          <h2>Ходовая часть</h2>
+          <p>Замена и ремонт элементов подвески и рулевого управления</p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div class="srv-left">
+          <div class="srv-dot"></div>
+          <div>
+            <div class="srv-name">Замена амортизаторов (передние)</div>
+            <div class="srv-duration">⏱ 1.5–2 ч</div>
+          </div>
+        </div>
+        <div class="srv-right">
+          <span class="srv-price">4 000 ₽</span>
+          <a href="branches.html" class="btn-sm">Записаться</a>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div class="srv-left">
+          <div class="srv-dot"></div>
+          <div>
+            <div class="srv-name">Замена амортизаторов (задние)</div>
+            <div class="srv-duration">⏱ 1–1.5 ч</div>
+          </div>
+        </div>
+        <div class="srv-right">
+          <span class="srv-price">3 500 ₽</span>
+          <a href="branches.html" class="btn-sm">Записаться</a>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div class="srv-left">
+          <div class="srv-dot"></div>
+          <div>
+            <div class="srv-name">Замена ступичного подшипника</div>
+            <div class="srv-duration">⏱ 1–2 ч</div>
+          </div>
+        </div>
+        <div class="srv-right">
+          <span class="srv-price">3 000 ₽</span>
+          <a href="branches.html" class="btn-sm">Записаться</a>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div class="srv-left">
+          <div class="srv-dot"></div>
+          <div>
+            <div class="srv-name">Замена ремня ГРМ</div>
+            <div class="srv-duration">⏱ 2–4 ч</div>
+          </div>
+        </div>
+        <div class="srv-right">
+          <span class="srv-price">5 000 ₽</span>
+          <a href="branches.html" class="btn-sm">Записаться</a>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div class="srv-left">
+          <div class="srv-dot"></div>
+          <div>
+            <div class="srv-name">Развал-схождение</div>
+            <div class="srv-duration">⏱ 30–60 мин</div>
+          </div>
+        </div>
+        <div class="srv-right">
+          <span class="srv-price">1 500 ₽</span>
+          <a href="branches.html" class="btn-sm">Записаться</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ ТЕХНИЧЕСКОЕ ОБСЛУЖИВАНИЕ ══ -->
+  <section class="sec sec-main">
+    <div class="sec-inner">
+
+      <div class="cat-header">
+        <div class="cat-icon">🛢️</div>
+        <div>
+          <h2>Техническое обслуживание</h2>
+          <p>Плановые работы для поддержания автомобиля в отличном состоянии</p>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <span style="font-size:1.1rem;">ℹ️</span>
+        <p>При комплексном ТО (масло + масляный фильтр + воздушный фильтр + свечи) — скидка 10%.</p>
+      </div>
+
+      <div class="service-row">
+        <div class="srv-left">
+          <div class="srv-dot"></div>
+          <div>
+            <div class="srv-name">Замена моторного масла</div>
+            <div class="srv-duration">⏱ 20–30 мин</div>
+          </div>
+        </div>
+        <div class="srv-right">
+          <span class="srv-price">800 ₽</span>
+          <a href="branches.html" class="btn-sm">Записаться</a>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div class="srv-left">
+          <div class="srv-dot"></div>
+          <div>
+            <div class="srv-name">Замена масляного фильтра</div>
+            <div class="srv-duration">⏱ 10–15 мин</div>
+          </div>
+        </div>
+        <div class="srv-right">
+          <span class="srv-price">300 ₽</span>
+          <a href="branches.html" class="btn-sm">Записаться</a>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div class="srv-left">
+          <div class="srv-dot"></div>
+          <div>
+            <div class="srv-name">Замена воздушного фильтра</div>
+            <div class="srv-duration">⏱ 10 мин</div>
+          </div>
+        </div>
+        <div class="srv-right">
+          <span class="srv-price">300 ₽</span>
+          <a href="branches.html" class="btn-sm">Записаться</a>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div class="srv-left">
+          <div class="srv-dot"></div>
+          <div>
+            <div class="srv-name">Замена свечей зажигания</div>
+            <div class="srv-duration">⏱ 30–45 мин</div>
+          </div>
+        </div>
+        <div class="srv-right">
+          <span class="srv-price">1 200 ₽</span>
+          <a href="branches.html" class="btn-sm">Записаться</a>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div class="srv-left">
+          <div class="srv-dot"></div>
+          <div>
+            <div class="srv-name">Комплексная компьютерная диагностика</div>
+            <div class="srv-duration">⏱ 40–60 мин</div>
+          </div>
+        </div>
+        <div class="srv-right">
+          <span class="srv-price">1 000 ₽</span>
+          <a href="branches.html" class="btn-sm">Записаться</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ CTA ══ -->
+  <div style="background:var(--bg-2); border-top:1px solid var(--border);
+              text-align:center; padding:4rem 1.5rem;">
+    <h2 style="text-transform:uppercase; letter-spacing:1px; margin:0 0 .8rem;">
+      Не нашли нужную услугу?
+    </h2>
+    <p style="margin:0 0 2rem;">Позвоните нам или приезжайте — разберёмся с любой задачей.</p>
+    <a href="branches.html" class="btn-green">Контакты филиалов</a>
+  </div>
+
+  <!-- ══ ФУТЕР ══ -->
+  <footer>
+    <div class="sec-inner">
+      <div class="w3-row-padding">
+        <div class="w3-col l4 m6 s12 w3-margin-bottom">
+          <div class="footer-brand"><span>Авто</span>Фикс</div>
+          <p>Профессиональный ремонт и обслуживание автомобилей.<br>Ежедневно с 8:00 до 20:00.</p>
+        </div>
+        <div class="w3-col l4 m6 s12 w3-margin-bottom">
+          <h4>Навигация</h4>
+          <a href="index.html"    class="flink">Главная</a>
+          <a href="services.html" class="flink">Услуги</a>
+          <a href="parts.html"    class="flink">Запчасти</a>
+          <a href="branches.html" class="flink">Филиалы</a>
+          <a href="about.html"    class="flink">О нас</a>
+        </div>
+        <div class="w3-col l4 m12 s12 w3-margin-bottom">
+          <h4>Наши адреса</h4>
+          <p>
+            📍 Москва, ул. Ленина, 5<br>
+            📍 Москва, ул. Мира, 12<br>
+            📍 Санкт-Петербург, Большой пр., 33
+          </p>
+        </div>
+      </div>
+    </div>
+    <p class="footer-copy">© 2024 АвтоФикс. Все права защищены.</p>
+  </footer>
+
+</div>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('mob-menu').classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>

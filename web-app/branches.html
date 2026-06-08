@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Филиалы — АвтоФикс</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Open+Sans:wght@400;600&display=swap">
+  <style>
+    :root {
+      --bg:        #0d1117;
+      --bg-2:      #161b22;
+      --bg-3:      #21262d;
+      --border:    #30363d;
+      --text:      #e6edf3;
+      --muted:     #8b949e;
+      --subtle:    #6e7681;
+      --green:     #238636;
+      --green-h:   #2ea043;
+      --green-dim: rgba(35,134,54,0.15);
+      --blue:      #58a6ff;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body {
+      background: var(--bg) !important;
+      color: var(--text) !important;
+      font-family: 'Open Sans', sans-serif !important;
+      margin: 0; padding: 0;
+    }
+    h1, h2, h3, h4 { font-family: 'Oswald', sans-serif; color: var(--text); }
+    p { color: var(--muted); line-height: 1.75; }
+
+    .w3-row, .w3-row-padding,
+    .w3-row-padding > [class*="w3-col"],
+    .w3-container { background: transparent !important; }
+
+    /* ══ Навигация ══ */
+    nav.topnav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: var(--bg-2) !important;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 1.2rem; height: 52px;
+    }
+    .nav-brand {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.3rem; letter-spacing: 1px;
+      color: var(--text); text-decoration: none;
+    }
+    .nav-brand span { color: var(--green-h); }
+    .nav-links { display: flex; gap: 2px; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none;
+      padding: 6px 12px; border-radius: 6px;
+      font-size: .9rem; transition: color .15s, background .15s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); background: var(--bg-3); }
+    .hamburger {
+      display: none; background: none; border: none;
+      color: var(--muted); font-size: 1.4rem; cursor: pointer; padding: 4px 8px;
+    }
+    #mob-menu {
+      display: none; flex-direction: column;
+      position: fixed; top: 52px; left: 0; right: 0; z-index: 199;
+      background: var(--bg-2); border-bottom: 1px solid var(--border);
+    }
+    #mob-menu.open { display: flex; }
+    #mob-menu a {
+      color: var(--muted); text-decoration: none;
+      padding: 13px 20px; border-bottom: 1px solid var(--border);
+      font-size: .95rem; transition: color .15s, background .15s;
+    }
+    #mob-menu a:hover { color: var(--text); background: var(--bg-3); }
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+    }
+
+    .page { margin-top: 52px; }
+
+    /* ══ Page Header ══ */
+    .page-header {
+      background: var(--bg-2);
+      border-bottom: 1px solid var(--border);
+      padding: 3rem 1.5rem;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .page-header::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 50% 100%, var(--green-dim), transparent 70%);
+      pointer-events: none;
+    }
+    .page-header h1 {
+      font-size: clamp(1.6rem, 4vw, 2.5rem);
+      text-transform: uppercase; letter-spacing: 2px;
+      margin: 0 0 .6rem; position: relative;
+    }
+    .page-header p { position: relative; margin: 0; font-size: .95rem; }
+
+    /* ══ Хлебные крошки ══ */
+    .breadcrumb {
+      padding: .8rem 1.5rem;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      font-size: .83rem; color: var(--subtle);
+    }
+    .breadcrumb a { color: var(--blue); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+
+    .sec-inner { max-width: 1100px; margin: 0 auto; }
+    .sec { padding: 4rem 1.5rem; border-bottom: 1px solid var(--border); }
+
+    /* ══ Карточка филиала ══ */
+    .branch-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: border-color .2s, transform .2s;
+      height: 100%;
+    }
+    .branch-card:hover { border-color: var(--green); transform: translateY(-3px); }
+
+    .branch-map {
+      width: 100%; height: 180px;
+      background: var(--bg-3);
+      display: flex; align-items: center; justify-content: center;
+      border-bottom: 1px solid var(--border);
+      position: relative; overflow: hidden;
+    }
+    /* Псевдо-карта: сетка улиц */
+    .branch-map::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 30px 30px;
+      opacity: .5;
+    }
+    .branch-map::after {
+      content: '';
+      position: absolute;
+      width: 16px; height: 16px;
+      background: var(--green);
+      border-radius: 50%;
+      box-shadow: 0 0 0 6px rgba(35,134,54,.25);
+    }
+    .map-label {
+      position: absolute; bottom: 10px; right: 10px;
+      background: var(--bg-2); border: 1px solid var(--border);
+      color: var(--blue); font-size: .75rem; padding: 3px 10px;
+      border-radius: 4px; text-decoration: none;
+      transition: background .15s; z-index: 1;
+    }
+    .map-label:hover { background: var(--bg-3); }
+
+    .branch-body { padding: 1.4rem 1.5rem; }
+
+    .branch-num {
+      display: inline-block;
+      background: var(--green-dim);
+      color: var(--green-h);
+      border: 1px solid rgba(46,160,67,.3);
+      border-radius: 4px;
+      font-size: .72rem; padding: 2px 10px;
+      letter-spacing: 1px; text-transform: uppercase;
+      margin-bottom: .8rem;
+      font-family: 'Oswald', sans-serif;
+    }
+
+    .branch-body h3 {
+      font-size: 1.2rem; text-transform: uppercase;
+      letter-spacing: 1px; margin: 0 0 1.2rem;
+    }
+
+    .branch-info { list-style: none; padding: 0; margin: 0 0 1.4rem; }
+    .branch-info li {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: .9rem;
+    }
+    .branch-info li:last-child { border-bottom: none; }
+    .branch-info .ico {
+      font-size: 1rem; flex-shrink: 0;
+      width: 22px; text-align: center;
+      margin-top: 1px;
+    }
+    .branch-info .val { color: var(--text); }
+    .branch-info .lbl { color: var(--subtle); font-size: .78rem; display: block; }
+
+    .branch-status {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: .82rem;
+    }
+    .dot-green {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--green-h);
+      box-shadow: 0 0 0 3px rgba(46,160,67,.2);
+      flex-shrink: 0;
+    }
+
+    .btn-call {
+      display: block; text-align: center;
+      background: var(--green); color: #fff;
+      border: none; border-radius: 6px;
+      padding: 10px; font-size: .92rem;
+      text-decoration: none;
+      transition: background .15s;
+      font-family: 'Oswald', sans-serif;
+      letter-spacing: .5px; text-transform: uppercase;
+    }
+    .btn-call:hover { background: var(--green-h); }
+
+    /* Одинаковая высота */
+    .branches-row { display: flex !important; flex-wrap: wrap !important; }
+    .branches-row > [class*="w3-col"] { display: flex !important; flex-direction: column !important; }
+    .branches-row .branch-card { flex: 1 !important; }
+
+    .w3-margin-bottom { margin-bottom: 16px !important; }
+
+    /* ══ Форма обратного звонка ══ */
+    .callback-section {
+      background: var(--bg-2);
+      border-bottom: 1px solid var(--border);
+      padding: 4rem 1.5rem;
+    }
+    .sec-title {
+      text-align: center; text-transform: uppercase;
+      letter-spacing: 1px; font-size: 1.6rem; margin: 0 0 .4rem;
+    }
+    .sec-rule {
+      width: 44px; height: 3px; background: var(--green);
+      margin: 0 auto 2.5rem; border-radius: 2px;
+    }
+
+    .callback-form {
+      max-width: 520px; margin: 0 auto;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .form-row { display: flex; gap: 12px; }
+    @media (max-width: 540px) { .form-row { flex-direction: column; } }
+
+    .form-field {
+      display: flex; flex-direction: column; gap: 5px; flex: 1;
+    }
+    .form-field label {
+      font-size: .8rem; color: var(--subtle);
+      text-transform: uppercase; letter-spacing: .5px;
+    }
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      background: var(--bg-3);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 9px 13px;
+      color: var(--text);
+      font-family: 'Open Sans', sans-serif;
+      font-size: .9rem;
+      transition: border-color .15s;
+      outline: none;
+    }
+    .form-field input:focus,
+    .form-field select:focus,
+    .form-field textarea:focus { border-color: var(--green); }
+    .form-field select option { background: var(--bg-3); }
+    .form-field textarea { resize: vertical; min-height: 90px; }
+
+    .btn-submit {
+      background: var(--green); color: #fff;
+      border: none; border-radius: 6px;
+      padding: 11px; font-size: 1rem;
+      font-family: 'Oswald', sans-serif;
+      letter-spacing: 1px; text-transform: uppercase;
+      cursor: pointer; transition: background .15s;
+    }
+    .btn-submit:hover { background: var(--green-h); }
+    .form-note { text-align: center; font-size: .78rem; color: var(--subtle); }
+
+    /* ══ Футер ══ */
+    footer { background: var(--bg-2) !important; padding: 2.5rem 1.5rem 0; }
+    footer h4 {
+      color: var(--text); text-transform: uppercase;
+      letter-spacing: 1px; font-size: .85rem; margin: 0 0 .8rem;
+    }
+    footer p { font-size: .88rem; margin: 0; line-height: 2.1; }
+    .footer-brand { font-family: 'Oswald', sans-serif; font-size: 1.2rem; margin-bottom: .8rem; }
+    .footer-brand span { color: var(--green-h); }
+    .flink {
+      display: block; color: var(--muted); text-decoration: none;
+      font-size: .88rem; padding: 3px 0; transition: color .15s;
+    }
+    .flink:hover { color: var(--blue); }
+    .footer-copy {
+      text-align: center; color: var(--subtle); font-size: .78rem;
+      padding: 1.5rem 0; border-top: 1px solid var(--border); margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ НАВИГАЦИЯ ══ -->
+<nav class="topnav">
+  <a href="index.html" class="nav-brand"><span>Авто</span>Фикс</a>
+  <div class="nav-links">
+    <a href="index.html">Главная</a>
+    <a href="services.html">Услуги</a>
+    <a href="parts.html">Запчасти</a>
+    <a href="branches.html" class="active">Филиалы</a>
+    <a href="about.html">О нас</a>
+  </div>
+  <button class="hamburger" onclick="toggleMenu()">☰</button>
+</nav>
+
+<div id="mob-menu">
+  <a href="index.html"    onclick="toggleMenu()">Главная</a>
+  <a href="services.html" onclick="toggleMenu()">Услуги</a>
+  <a href="parts.html"    onclick="toggleMenu()">Запчасти</a>
+  <a href="branches.html" onclick="toggleMenu()">Филиалы</a>
+  <a href="about.html"    onclick="toggleMenu()">О нас</a>
+</div>
+
+<div class="page">
+
+  <!-- ══ PAGE HEADER ══ -->
+  <div class="page-header">
+    <h1>Наши филиалы</h1>
+    <p>Три удобных адреса в Москве и Санкт-Петербурге</p>
+  </div>
+
+  <div class="breadcrumb">
+    <a href="index.html">Главная</a> / Филиалы
+  </div>
+
+  <!-- ══ КАРТОЧКИ ФИЛИАЛОВ ══ -->
+  <section class="sec" style="background:var(--bg);">
+    <div class="sec-inner">
+      <div class="w3-row-padding branches-row">
+
+        <!-- Филиал 1 — Москва Центральный -->
+        <div class="w3-col l4 m6 s12 w3-margin-bottom">
+          <div class="branch-card">
+            <div class="branch-map">
+              <a href="https://maps.google.com/?q=Москва+ул+Ленина+5"
+                 target="_blank" class="map-label">Открыть на карте ↗</a>
+            </div>
+            <div class="branch-body">
+              <div class="branch-num">Филиал № 1</div>
+              <h3>Москва — Центральный</h3>
+              <ul class="branch-info">
+                <li>
+                  <span class="ico">📍</span>
+                  <span><span class="lbl">Адрес</span>
+                  <span class="val">ул. Ленина, 5, Москва</span></span>
+                </li>
+                <li>
+                  <span class="ico">📞</span>
+                  <span><span class="lbl">Телефон</span>
+                  <span class="val">+7 (495) 123-45-67</span></span>
+                </li>
+                <li>
+                  <span class="ico">🕗</span>
+                  <span><span class="lbl">Режим работы</span>
+                  <span class="val">Пн–Вс 8:00 — 20:00</span></span>
+                </li>
+                <li>
+                  <span class="ico">🚇</span>
+                  <span><span class="lbl">Метро</span>
+                  <span class="val">Охотный ряд, 5 мин пешком</span></span>
+                </li>
+                <li>
+                  <span class="ico">🟢</span>
+                  <span>
+                    <div class="branch-status">
+                      <span class="dot-green"></span>
+                      <span class="val">Сейчас открыто</span>
+                    </div>
+                  </span>
+                </li>
+              </ul>
+              <a href="tel:+74951234567" class="btn-call">📞 Позвонить</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Филиал 2 — Москва Северный -->
+        <div class="w3-col l4 m6 s12 w3-margin-bottom">
+          <div class="branch-card">
+            <div class="branch-map">
+              <a href="https://maps.google.com/?q=Москва+ул+Мира+12"
+                 target="_blank" class="map-label">Открыть на карте ↗</a>
+            </div>
+            <div class="branch-body">
+              <div class="branch-num">Филиал № 2</div>
+              <h3>Москва — Северный</h3>
+              <ul class="branch-info">
+                <li>
+                  <span class="ico">📍</span>
+                  <span><span class="lbl">Адрес</span>
+                  <span class="val">пр. Мира, 12, Москва</span></span>
+                </li>
+                <li>
+                  <span class="ico">📞</span>
+                  <span><span class="lbl">Телефон</span>
+                  <span class="val">+7 (495) 234-56-78</span></span>
+                </li>
+                <li>
+                  <span class="ico">🕗</span>
+                  <span><span class="lbl">Режим работы</span>
+                  <span class="val">Пн–Вс 8:00 — 20:00</span></span>
+                </li>
+                <li>
+                  <span class="ico">🚇</span>
+                  <span><span class="lbl">Метро</span>
+                  <span class="val">ВДНХ, 7 мин пешком</span></span>
+                </li>
+                <li>
+                  <span class="ico">🟢</span>
+                  <span>
+                    <div class="branch-status">
+                      <span class="dot-green"></span>
+                      <span class="val">Сейчас открыто</span>
+                    </div>
+                  </span>
+                </li>
+              </ul>
+              <a href="tel:+74952345678" class="btn-call">📞 Позвонить</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Филиал 3 — Санкт-Петербург -->
+        <div class="w3-col l4 m6 s12 w3-margin-bottom">
+          <div class="branch-card">
+            <div class="branch-map">
+              <a href="https://maps.google.com/?q=Санкт-Петербург+Большой+проспект+33"
+                 target="_blank" class="map-label">Открыть на карте ↗</a>
+            </div>
+            <div class="branch-body">
+              <div class="branch-num">Филиал № 3</div>
+              <h3>Санкт-Петербург</h3>
+              <ul class="branch-info">
+                <li>
+                  <span class="ico">📍</span>
+                  <span><span class="lbl">Адрес</span>
+                  <span class="val">Большой пр. В.О., 33, СПб</span></span>
+                </li>
+                <li>
+                  <span class="ico">📞</span>
+                  <span><span class="lbl">Телефон</span>
+                  <span class="val">+7 (812) 345-67-89</span></span>
+                </li>
+                <li>
+                  <span class="ico">🕗</span>
+                  <span><span class="lbl">Режим работы</span>
+                  <span class="val">Пн–Вс 9:00 — 21:00</span></span>
+                </li>
+                <li>
+                  <span class="ico">🚇</span>
+                  <span><span class="lbl">Метро</span>
+                  <span class="val">Василеостровская, 3 мин</span></span>
+                </li>
+                <li>
+                  <span class="ico">🟢</span>
+                  <span>
+                    <div class="branch-status">
+                      <span class="dot-green"></span>
+                      <span class="val">Сейчас открыто</span>
+                    </div>
+                  </span>
+                </li>
+              </ul>
+              <a href="tel:+78123456789" class="btn-call">📞 Позвонить</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ ФОРМА ОБРАТНОГО ЗВОНКА ══ -->
+  <section class="callback-section">
+    <h2 class="sec-title">Записаться на ремонт</h2>
+    <div class="sec-rule"></div>
+    <div class="callback-form">
+
+      <div class="form-row">
+        <div class="form-field">
+          <label>Ваше имя</label>
+          <input type="text" placeholder="Иван Иванов">
+        </div>
+        <div class="form-field">
+          <label>Телефон</label>
+          <input type="tel" placeholder="+7 (___) ___-__-__">
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label>Выберите филиал</label>
+        <select>
+          <option value="">— Выберите —</option>
+          <option value="1">Москва — Центральный (ул. Ленина, 5)</option>
+          <option value="2">Москва — Северный (пр. Мира, 12)</option>
+          <option value="3">Санкт-Петербург (Большой пр., 33)</option>
+        </select>
+      </div>
+
+      <div class="form-field">
+        <label>Опишите проблему</label>
+        <textarea placeholder="Стук при торможении, загорелась лампа и т.д."></textarea>
+      </div>
+
+      <button class="btn-submit" onclick="handleSubmit()">Отправить заявку</button>
+      <p class="form-note">Перезвоним в течение 30 минут в рабочее время</p>
+
+      <div id="success-msg" style="display:none; background:rgba(35,134,54,.12);
+           border:1px solid rgba(46,160,67,.35); border-radius:8px;
+           padding:1rem; text-align:center; color:var(--green-h);">
+        ✅ Заявка отправлена! Ожидайте звонка.
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ ФУТЕР ══ -->
+  <footer>
+    <div class="sec-inner">
+      <div class="w3-row-padding">
+        <div class="w3-col l4 m6 s12 w3-margin-bottom">
+          <div class="footer-brand"><span>Авто</span>Фикс</div>
+          <p>Профессиональный ремонт и обслуживание автомобилей.<br>Ежедневно с 8:00 до 20:00.</p>
+        </div>
+        <div class="w3-col l4 m6 s12 w3-margin-bottom">
+          <h4>Навигация</h4>
+          <a href="index.html"    class="flink">Главная</a>
+          <a href="services.html" class="flink">Услуги</a>
+          <a href="parts.html"    class="flink">Запчасти</a>
+          <a href="branches.html" class="flink">Филиалы</a>
+          <a href="about.html"    class="flink">О нас</a>
+        </div>
+        <div class="w3-col l4 m12 s12 w3-margin-bottom">
+          <h4>Наши адреса</h4>
+          <p>
+            📍 Москва, ул. Ленина, 5<br>
+            📍 Москва, ул. Мира, 12<br>
+            📍 Санкт-Петербург, Большой пр., 33
+          </p>
+        </div>
+      </div>
+    </div>
+    <p class="footer-copy">© 2024 АвтоФикс. Все права защищены.</p>
+  </footer>
+
+</div>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('mob-menu').classList.toggle('open');
+  }
+
+  function handleSubmit() {
+    document.getElementById('success-msg').style.display = 'block';
+    setTimeout(() => {
+      document.getElementById('success-msg').style.display = 'none';
+    }, 4000);
+  }
+</script>
+
+</body>
+</html>

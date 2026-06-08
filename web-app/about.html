@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>О нас — АвтоФикс</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Open+Sans:wght@400;600&display=swap">
+  <style>
+    :root {
+      --bg:        #0d1117;
+      --bg-2:      #161b22;
+      --bg-3:      #21262d;
+      --border:    #30363d;
+      --text:      #e6edf3;
+      --muted:     #8b949e;
+      --subtle:    #6e7681;
+      --green:     #238636;
+      --green-h:   #2ea043;
+      --green-dim: rgba(35,134,54,0.15);
+      --blue:      #58a6ff;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body {
+      background: var(--bg) !important;
+      color: var(--text) !important;
+      font-family: 'Open Sans', sans-serif !important;
+      margin: 0; padding: 0;
+    }
+    h1, h2, h3, h4 { font-family: 'Oswald', sans-serif; color: var(--text); }
+    p { color: var(--muted); line-height: 1.75; }
+
+    .w3-row, .w3-row-padding,
+    .w3-row-padding > [class*="w3-col"],
+    .w3-container { background: transparent !important; }
+
+    /* ══ Навигация ══ */
+    nav.topnav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: var(--bg-2) !important;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 1.2rem; height: 52px;
+    }
+    .nav-brand {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.3rem; letter-spacing: 1px;
+      color: var(--text); text-decoration: none;
+    }
+    .nav-brand span { color: var(--green-h); }
+    .nav-links { display: flex; gap: 2px; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none;
+      padding: 6px 12px; border-radius: 6px;
+      font-size: .9rem; transition: color .15s, background .15s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); background: var(--bg-3); }
+    .hamburger {
+      display: none; background: none; border: none;
+      color: var(--muted); font-size: 1.4rem; cursor: pointer; padding: 4px 8px;
+    }
+    #mob-menu {
+      display: none; flex-direction: column;
+      position: fixed; top: 52px; left: 0; right: 0; z-index: 199;
+      background: var(--bg-2); border-bottom: 1px solid var(--border);
+    }
+    #mob-menu.open { display: flex; }
+    #mob-menu a {
+      color: var(--muted); text-decoration: none;
+      padding: 13px 20px; border-bottom: 1px solid var(--border);
+      font-size: .95rem; transition: color .15s, background .15s;
+    }
+    #mob-menu a:hover { color: var(--text); background: var(--bg-3); }
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+    }
+
+    .page { margin-top: 52px; }
+
+    /* ══ Page Header ══ */
+    .page-header {
+      background: var(--bg-2);
+      border-bottom: 1px solid var(--border);
+      padding: 3rem 1.5rem;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .page-header::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 50% 100%, var(--green-dim), transparent 70%);
+      pointer-events: none;
+    }
+    .page-header h1 {
+      font-size: clamp(1.6rem, 4vw, 2.5rem);
+      text-transform: uppercase; letter-spacing: 2px;
+      margin: 0 0 .6rem; position: relative;
+    }
+    .page-header p { position: relative; margin: 0; font-size: .95rem; }
+
+    .breadcrumb {
+      padding: .8rem 1.5rem;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      font-size: .83rem; color: var(--subtle);
+    }
+    .breadcrumb a { color: var(--blue); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+
+    .sec-inner { max-width: 1100px; margin: 0 auto; }
+    .sec { padding: 4rem 1.5rem; border-bottom: 1px solid var(--border); }
+    .sec-alt  { background: var(--bg-2); }
+    .sec-main { background: var(--bg); }
+
+    .sec-title {
+      text-align: center; text-transform: uppercase;
+      letter-spacing: 1px; font-size: 1.7rem; margin: 0 0 .4rem;
+    }
+    .sec-rule {
+      width: 44px; height: 3px; background: var(--green);
+      margin: 0 auto 2.8rem; border-radius: 2px;
+    }
+
+    /* ══ Миссия (две колонки) ══ */
+    .mission-grid {
+      display: flex; gap: 3rem; align-items: center; flex-wrap: wrap;
+    }
+    .mission-text { flex: 1; min-width: 260px; }
+    .mission-text h2 {
+      text-transform: uppercase; letter-spacing: 1px;
+      font-size: 1.7rem; margin: 0 0 1rem;
+    }
+    .mission-text p { margin: 0 0 1rem; }
+    .mission-text p:last-child { margin: 0; }
+
+    .mission-stats {
+      flex: 0 0 280px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+    }
+    @media (max-width: 700px) {
+      .mission-grid { flex-direction: column; }
+      .mission-stats { flex: none; width: 100%; }
+    }
+
+    .stat-box {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.2rem 1rem;
+      text-align: center;
+      transition: border-color .2s;
+    }
+    .stat-box:hover { border-color: var(--green); }
+    .stat-num {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2rem; color: var(--green-h);
+      line-height: 1; margin-bottom: .3rem;
+    }
+    .stat-label { font-size: .78rem; color: var(--subtle); text-transform: uppercase; letter-spacing: .5px; }
+
+    /* ══ История — таймлайн ══ */
+    .timeline { max-width: 700px; margin: 0 auto; }
+    .tl-item {
+      display: flex; gap: 1.2rem;
+      padding-bottom: 2rem;
+      position: relative;
+    }
+    .tl-item:last-child { padding-bottom: 0; }
+    .tl-item:last-child .tl-line { display: none; }
+
+    .tl-left { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+    .tl-dot {
+      width: 14px; height: 14px; border-radius: 50%;
+      background: var(--green); border: 2px solid var(--bg);
+      box-shadow: 0 0 0 3px var(--green-dim);
+      flex-shrink: 0;
+    }
+    .tl-line {
+      width: 2px; flex: 1; background: var(--border);
+      margin-top: 6px;
+    }
+
+    .tl-right { padding-top: 0; }
+    .tl-year {
+      font-family: 'Oswald', sans-serif;
+      color: var(--green-h); font-size: .85rem;
+      letter-spacing: 1px; text-transform: uppercase;
+      margin-bottom: .3rem;
+    }
+    .tl-right h3 {
+      font-size: 1.05rem; text-transform: uppercase;
+      letter-spacing: .5px; margin: 0 0 .4rem;
+    }
+    .tl-right p { font-size: .9rem; margin: 0; }
+
+    /* ══ Карточки механиков ══ */
+    .mech-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      text-align: center;
+      transition: border-color .2s, transform .2s;
+      height: 100%;
+    }
+    .mech-card:hover { border-color: var(--green); transform: translateY(-3px); }
+
+    .mech-avatar {
+      width: 100%; height: 180px;
+      background: var(--bg-3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 4.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .mech-body { padding: 1.3rem 1.2rem; }
+    .mech-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.15rem; text-transform: uppercase;
+      letter-spacing: 1px; margin: 0 0 .3rem;
+    }
+    .mech-role { color: var(--muted); font-size: .83rem; margin: 0 0 1rem; }
+
+    .mech-tags { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-bottom: 1rem; }
+    .tag {
+      background: var(--bg-3); border: 1px solid var(--border);
+      color: var(--muted); font-size: .72rem;
+      padding: 3px 10px; border-radius: 12px;
+    }
+
+    .mech-rank {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--green-dim);
+      border: 1px solid rgba(46,160,67,.3);
+      border-radius: 6px; padding: 4px 12px;
+      font-size: .8rem; color: var(--green-h);
+      font-family: 'Oswald', sans-serif; letter-spacing: .5px;
+    }
+
+    /* Одинаковая высота */
+    .mechs-row { display: flex !important; flex-wrap: wrap !important; }
+    .mechs-row > [class*="w3-col"] { display: flex !important; flex-direction: column !important; }
+    .mechs-row .mech-card { flex: 1 !important; }
+
+    .w3-margin-bottom { margin-bottom: 16px !important; }
+
+    /* ══ Бренды ══ */
+    .brands-strip {
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+    }
+    .brands-strip h3 {
+      font-size: .85rem; text-transform: uppercase;
+      letter-spacing: 2px; color: var(--subtle); margin: 0 0 1.5rem;
+    }
+    .brands-list {
+      display: flex; flex-wrap: wrap;
+      justify-content: center; gap: 12px;
+    }
+    .brand-pill {
+      background: var(--bg-2); border: 1px solid var(--border);
+      border-radius: 6px; padding: 8px 20px;
+      font-family: 'Oswald', sans-serif;
+      font-size: .95rem; color: var(--muted);
+      letter-spacing: .5px;
+      transition: border-color .2s, color .2s;
+    }
+    .brand-pill:hover { border-color: var(--green); color: var(--text); }
+
+    /* ══ Футер ══ */
+    footer { background: var(--bg-2) !important; padding: 2.5rem 1.5rem 0; }
+    footer h4 {
+      color: var(--text); text-transform: uppercase;
+      letter-spacing: 1px; font-size: .85rem; margin: 0 0 .8rem;
+    }
+    footer p { font-size: .88rem; margin: 0; line-height: 2.1; }
+    .footer-brand { font-family: 'Oswald', sans-serif; font-size: 1.2rem; margin-bottom: .8rem; }
+    .footer-brand span { color: var(--green-h); }
+    .flink {
+      display: block; color: var(--muted); text-decoration: none;
+      font-size: .88rem; padding: 3px 0; transition: color .15s;
+    }
+    .flink:hover { color: var(--blue); }
+    .footer-copy {
+      text-align: center; color: var(--subtle); font-size: .78rem;
+      padding: 1.5rem 0; border-top: 1px solid var(--border); margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ НАВИГАЦИЯ ══ -->
+<nav class="topnav">
+  <a href="index.html" class="nav-brand"><span>Авто</span>Фикс</a>
+  <div class="nav-links">
+    <a href="index.html">Главная</a>
+    <a href="services.html">Услуги</a>
+    <a href="parts.html">Запчасти</a>
+    <a href="branches.html">Филиалы</a>
+    <a href="about.html" class="active">О нас</a>
+  </div>
+  <button class="hamburger" onclick="toggleMenu()">☰</button>
+</nav>
+
+<div id="mob-menu">
+  <a href="index.html"    onclick="toggleMenu()">Главная</a>
+  <a href="services.html" onclick="toggleMenu()">Услуги</a>
+  <a href="parts.html"    onclick="toggleMenu()">Запчасти</a>
+  <a href="branches.html" onclick="toggleMenu()">Филиалы</a>
+  <a href="about.html"    onclick="toggleMenu()">О нас</a>
+</div>
+
+<div class="page">
+
+  <!-- ══ PAGE HEADER ══ -->
+  <div class="page-header">
+    <h1>О компании</h1>
+    <p>Профессиональный ремонт с 2019 года</p>
+  </div>
+
+  <div class="breadcrumb">
+    <a href="index.html">Главная</a> / О нас
+  </div>
+
+  <!-- ══ МИССИЯ ══ -->
+  <section class="sec sec-main">
+    <div class="sec-inner">
+      <div class="mission-grid">
+
+        <div class="mission-text">
+          <h2>Наша миссия</h2>
+          <p>АвтоФикс — это сеть автомастерских, которая работает по единому стандарту качества во всех трёх филиалах. Мы убеждены: ремонт автомобиля не должен быть стрессом. Наша задача — сделать его прозрачным, быстрым и предсказуемым.</p>
+          <p>С 2019 года мы обслуживаем владельцев автомобилей в Москве и Санкт-Петербурге. За это время через наши мастерские прошло более 12 000 автомобилей, и каждый клиент получил честный счёт и гарантию на выполненные работы.</p>
+          <p>Мы не навязываем лишних работ. Если деталь можно восстановить — восстановим. Если нужна замена — объясним зачем и покажем снятую деталь.</p>
+        </div>
+
+        <div class="mission-stats">
+          <div class="stat-box">
+            <div class="stat-num">5+</div>
+            <div class="stat-label">лет на рынке</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">3</div>
+            <div class="stat-label">филиала</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">12K+</div>
+            <div class="stat-label">клиентов</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">98%</div>
+            <div class="stat-label">довольных</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ ИСТОРИЯ ══ -->
+  <section class="sec sec-alt">
+    <div class="sec-inner">
+      <h2 class="sec-title">История компании</h2>
+      <div class="sec-rule"></div>
+
+      <div class="timeline">
+
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
+          <div class="tl-right">
+            <div class="tl-year">2019</div>
+            <h3>Открытие первого филиала</h3>
+            <p>На ул. Ленина в Москве открылась первая мастерская АвтоФикс. Три механика, один подъёмник и принцип «только честный ремонт».</p>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
+          <div class="tl-right">
+            <div class="tl-year">2021</div>
+            <h3>Второй филиал в Москве</h3>
+            <p>Высокий спрос потребовал расширения. На пр. Мира открылся Северный филиал с расширенным парком оборудования и специализацией на ходовой части.</p>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
+          <div class="tl-right">
+            <div class="tl-year">2022</div>
+            <h3>Партнёрство с поставщиками</h3>
+            <p>Заключены прямые договоры с Bosch, Brembo, Denso и Febi Bilstein. Это позволило сократить сроки поставки запчастей до 1–3 дней и снизить цены.</p>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
+          <div class="tl-right">
+            <div class="tl-year">2024</div>
+            <h3>Выход в Санкт-Петербург</h3>
+            <p>Открыт третий филиал на Большом проспекте В.О. АвтоФикс вышел за пределы Москвы и стал федеральной сетью автомастерских.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ КОМАНДА ══ -->
+  <section class="sec sec-main">
+    <div class="sec-inner">
+      <h2 class="sec-title">Наши механики</h2>
+      <div class="sec-rule"></div>
+
+      <div class="w3-row-padding mechs-row">
+
+        <div class="w3-col l3 m6 s12 w3-margin-bottom">
+          <div class="mech-card">
+            <div class="mech-avatar">👨‍🔧</div>
+            <div class="mech-body">
+              <div class="mech-name">Дмитрий Козлов</div>
+              <div class="mech-role">Старший механик · Москва (Центр)</div>
+              <div class="mech-tags">
+                <span class="tag">Тормозная система</span>
+                <span class="tag">Диагностика</span>
+              </div>
+              <div class="mech-rank">⭐ Разряд 6</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="w3-col l3 m6 s12 w3-margin-bottom">
+          <div class="mech-card">
+            <div class="mech-avatar">👨‍🔧</div>
+            <div class="mech-body">
+              <div class="mech-name">Сергей Морозов</div>
+              <div class="mech-role">Механик · Москва (Север)</div>
+              <div class="mech-tags">
+                <span class="tag">Ходовая часть</span>
+                <span class="tag">ГРМ</span>
+              </div>
+              <div class="mech-rank">⭐ Разряд 5</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="w3-col l3 m6 s12 w3-margin-bottom">
+          <div class="mech-card">
+            <div class="mech-avatar">👩‍🔧</div>
+            <div class="mech-body">
+              <div class="mech-name">Виктор Соколов</div>
+              <div class="mech-role">Механик · Санкт-Петербург</div>
+              <div class="mech-tags">
+                <span class="tag">ТО</span>
+                <span class="tag">Подвеска</span>
+              </div>
+              <div class="mech-rank">⭐ Разряд 5</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="w3-col l3 m6 s12 w3-margin-bottom">
+          <div class="mech-card">
+            <div class="mech-avatar">👨‍🔧</div>
+            <div class="mech-body">
+              <div class="mech-name">Алексей Новиков</div>
+              <div class="mech-role">Механик · Москва (Центр)</div>
+              <div class="mech-tags">
+                <span class="tag">Двигатель</span>
+                <span class="tag">Электрика</span>
+              </div>
+              <div class="mech-rank">⭐ Разряд 4</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ БРЕНДЫ ══ -->
+  <div class="brands-strip">
+    <h3>Работаем с запчастями от</h3>
+    <div class="brands-list">
+      <div class="brand-pill">Bosch</div>
+      <div class="brand-pill">Brembo</div>
+      <div class="brand-pill">Denso</div>
+      <div class="brand-pill">Febi Bilstein</div>
+      <div class="brand-pill">KYB</div>
+      <div class="brand-pill">Sachs</div>
+      <div class="brand-pill">SKF</div>
+      <div class="brand-pill">Gates</div>
+      <div class="brand-pill">NGK</div>
+      <div class="brand-pill">Mann-Filter</div>
+      <div class="brand-pill">TRW</div>
+    </div>
+  </div>
+
+  <!-- ══ ФУТЕР ══ -->
+  <footer>
+    <div class="sec-inner">
+      <div class="w3-row-padding">
+        <div class="w3-col l4 m6 s12 w3-margin-bottom">
+          <div class="footer-brand"><span>Авто</span>Фикс</div>
+          <p>Профессиональный ремонт и обслуживание автомобилей.<br>Ежедневно с 8:00 до 20:00.</p>
+        </div>
+        <div class="w3-col l4 m6 s12 w3-margin-bottom">
+          <h4>Навигация</h4>
+          <a href="index.html"    class="flink">Главная</a>
+          <a href="services.html" class="flink">Услуги</a>
+          <a href="parts.html"    class="flink">Запчасти</a>
+          <a href="branches.html" class="flink">Филиалы</a>
+          <a href="about.html"    class="flink">О нас</a>
+        </div>
+        <div class="w3-col l4 m12 s12 w3-margin-bottom">
+          <h4>Наши адреса</h4>
+          <p>
+            📍 Москва, ул. Ленина, 5<br>
+            📍 Москва, ул. Мира, 12<br>
+            📍 Санкт-Петербург, Большой пр., 33
+          </p>
+        </div>
+      </div>
+    </div>
+    <p class="footer-copy">© 2024 АвтоФикс. Все права защищены.</p>
+  </footer>
+
+</div>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('mob-menu').classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>

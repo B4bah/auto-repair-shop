@@ -1,0 +1,169 @@
+/* ═════════════════════════════════════════════════════════ */
+/*  Общие переменные, сброс, навигация, футер, секции, кнопки  */
+/* ═════════════════════════════════════════════════════════ */
+
+:root {
+  --bg:        #0d1117;
+  --bg-2:      #161b22;
+  --bg-3:      #21262d;
+  --border:    #30363d;
+  --text:      #e6edf3;
+  --muted:     #8b949e;
+  --subtle:    #6e7681;
+  --green:     #238636;
+  --green-h:   #2ea043;
+  --green-dim: rgba(35,134,54,0.15);
+  --blue:      #58a6ff;
+  --yellow:    #d29922;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  background: var(--bg) !important;
+  color: var(--text) !important;
+  font-family: 'Open Sans', sans-serif !important;
+  margin: 0; padding: 0;
+}
+
+h1, h2, h3, h4 { font-family: 'Oswald', sans-serif; color: var(--text); }
+p { color: var(--muted); line-height: 1.75; }
+
+/* W3.CSS – убираем лишние фоны */
+.w3-row, .w3-row-padding,
+.w3-row-padding > [class*="w3-col"],
+.w3-container { background: transparent !important; }
+
+/* ══ НАВИГАЦИЯ (общая) ══ */
+nav.topnav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  background: var(--bg-2) !important;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 1.2rem; height: 52px;
+}
+.nav-brand {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.3rem; letter-spacing: 1px;
+  color: var(--text); text-decoration: none;
+}
+.nav-brand span { color: var(--green-h); }
+.nav-links { display: flex; gap: 2px; }
+.nav-links a {
+  color: var(--muted); text-decoration: none;
+  padding: 6px 12px; border-radius: 6px;
+  font-size: .9rem; transition: color .15s, background .15s;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--text); background: var(--bg-3); }
+.hamburger {
+  display: none; background: none; border: none;
+  color: var(--muted); font-size: 1.4rem; cursor: pointer; padding: 4px 8px;
+}
+#mob-menu {
+  display: none; flex-direction: column;
+  position: fixed; top: 52px; left: 0; right: 0; z-index: 199;
+  background: var(--bg-2); border-bottom: 1px solid var(--border);
+}
+#mob-menu.open { display: flex; }
+#mob-menu a {
+  color: var(--muted); text-decoration: none;
+  padding: 13px 20px; border-bottom: 1px solid var(--border);
+  font-size: .95rem; transition: color .15s, background .15s;
+}
+#mob-menu a:hover { color: var(--text); background: var(--bg-3); }
+@media (max-width: 600px) {
+  .nav-links { display: none; }
+  .hamburger { display: block; }
+}
+
+/* ══ ОСНОВНОЙ КОНТЕЙНЕР ══ */
+.page { margin-top: 52px; }
+
+/* ══ ХЛЕБНЫЕ КРОШКИ (общие) ══ */
+.breadcrumb {
+  padding: .8rem 1.5rem;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  font-size: .83rem; color: var(--subtle);
+}
+.breadcrumb a { color: var(--blue); text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+
+/* ══ СЕКЦИИ (общие) ══ */
+.sec { padding: 4rem 1.5rem; border-bottom: 1px solid var(--border); }
+.sec-alt  { background: var(--bg-2); }
+.sec-main { background: var(--bg); }
+.sec-title {
+  text-align: center; text-transform: uppercase;
+  letter-spacing: 1px; font-size: 1.7rem; margin: 0 0 .4rem;
+}
+.sec-rule {
+  width: 44px; height: 3px; background: var(--green);
+  margin: 0 auto 2.8rem; border-radius: 2px;
+}
+.sec-inner { max-width: 1100px; margin: 0 auto; }
+
+/* ══ ЗАГОЛОВОК СТРАНИЦЫ (общий для всех, кроме главной) ══ */
+.page-header {
+  background: var(--bg-2);
+  border-bottom: 1px solid var(--border);
+  padding: 3rem 1.5rem;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.page-header::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 80% at 50% 100%, var(--green-dim), transparent 70%);
+  pointer-events: none;
+}
+.page-header h1 {
+  font-size: clamp(1.6rem, 4vw, 2.5rem);
+  text-transform: uppercase; letter-spacing: 2px;
+  margin: 0 0 .6rem; position: relative;
+}
+.page-header p { position: relative; margin: 0; font-size: .95rem; }
+
+/* ══ ОБЩИЕ КНОПКИ ══ */
+.btn-green {
+  background: var(--green); color: #fff;
+  border: 1px solid rgba(240,246,252,.1);
+  padding: 10px 28px; border-radius: 6px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1rem; letter-spacing: 1px; text-transform: uppercase;
+  text-decoration: none; transition: background .15s;
+  display: inline-block;
+}
+.btn-green:hover { background: var(--green-h); }
+
+.btn-ghost {
+  background: var(--bg-3); color: var(--text);
+  border: 1px solid var(--border);
+  padding: 10px 28px; border-radius: 6px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1rem; letter-spacing: 1px; text-transform: uppercase;
+  text-decoration: none; transition: background .15s;
+  display: inline-block;
+}
+.btn-ghost:hover { background: var(--border); }
+
+/* ══ ФУТЕР (общий) ══ */
+footer { background: var(--bg-2) !important; padding: 2.5rem 1.5rem 0; }
+footer h4 {
+  color: var(--text); text-transform: uppercase;
+  letter-spacing: 1px; font-size: .85rem; margin: 0 0 .8rem;
+}
+footer p { font-size: .88rem; margin: 0; line-height: 2.1; }
+.footer-brand { font-family: 'Oswald', sans-serif; font-size: 1.2rem; margin-bottom: .8rem; }
+.footer-brand span { color: var(--green-h); }
+.flink {
+  display: block; color: var(--muted); text-decoration: none;
+  font-size: .88rem; padding: 3px 0; transition: color .15s;
+}
+.flink:hover { color: var(--blue); }
+.footer-copy {
+  text-align: center; color: var(--subtle); font-size: .78rem;
+  padding: 1.5rem 0; border-top: 1px solid var(--border); margin-top: 2rem;
+}
+
+/* ══ УТИЛИТЫ ══ */
+.w3-margin-bottom { margin-bottom: 16px !important; }
