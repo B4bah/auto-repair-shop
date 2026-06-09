@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Open+Sans:wght@400;600&display=swap">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/w3overrides.css">
   <link rel="stylesheet" href="css/parts.css">
   <script src="js/main.js" defer></script>
   <script src="js/parts.js" defer></script>
@@ -18,7 +19,14 @@
   <a href="index.html" class="nav-brand"><span>Авто</span>Фикс</a>
   <div class="nav-links">
     <a href="index.html">Главная</a>
-    <a href="services.html">Услуги</a>
+    <div class="w3-dropdown-hover nav-dd">
+      <a href="services.html" class="nav-link">Услуги ▾</a>
+      <div class="w3-dropdown-content">
+        <a href="services.html#brakes">🔧 Тормозная система</a>
+        <a href="services.html#suspension">⚙️ Ходовая часть</a>
+        <a href="services.html#maintenance">🛢️ Техническое обслуживание</a>
+      </div>
+    </div>
     <a href="parts.html" class="active">Запчасти</a>
     <a href="branches.html">Филиалы</a>
     <a href="about.html">О нас</a>
