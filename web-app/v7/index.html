@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>АвтоФикс — Профессиональный ремонт автомобилей</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Open+Sans:wght@400;600&display=swap" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/index.css" />
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+
+<!-- ══ НАВИГАЦИЯ ══ -->
+<nav class="topnav">
+  <a href="index.html" class="nav-brand"><span>Авто</span>Фикс</a>
+  <div class="nav-links">
+    <a href="index.html" class="active">Главная</a>
+    <div class="w3-dropdown-hover nav-dd">
+      <a href="services.html" class="nav-link">Услуги ▾</a>
+      <div class="w3-dropdown-content">
+        <a href="services.html#brakes">🔧 Тормозная система</a>
+        <a href="services.html#suspension">⚙️ Ходовая часть</a>
+        <a href="services.html#maintenance">🛢️ Техническое обслуживание</a>
+      </div>
+    </div>
+    <a href="parts.html">Запчасти</a>
+    <a href="branches.html">Филиалы</a>
+    <a href="about.html">О нас</a>
+  </div>
+  <button class="hamburger" onclick="toggleMenu()">☰</button>
+</nav>
+
+<div id="mob-menu">
+  <a href="index.html"    onclick="toggleMenu()">Главная</a>
+  <a href="services.html" onclick="toggleMenu()">Услуги</a>
+  <a href="parts.html"    onclick="toggleMenu()">Запчасти</a>
+  <a href="branches.html" onclick="toggleMenu()">Филиалы</a>
+  <a href="about.html"    onclick="toggleMenu()">О нас</a>
+</div>
+
+<div class="page">
+
+  <!-- ══ HERO ══ -->
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="badge">Москва &amp; Санкт-Петербург</div>
+      <h1>Профессиональный<br />ремонт автомобилей</h1>
+      <p>Диагностика, ремонт ходовой и тормозной системы,<br />техническое обслуживание. Оригинальные запчасти.</p>
+      <div class="btn-row">
+        <a href="services.html" class="btn-green">Записаться на ремонт</a>
+        <a href="parts.html"    class="btn-ghost">Каталог запчастей</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══ УСЛУГИ ══ -->
+  <section class="sec sec-alt">
+    <h2 class="sec-title">Наши услуги</h2>
+    <div class="sec-rule"></div>
+    <div class="sec-inner">
+      <div class="w3-row-padding cards-row">
+        <div class="w3-col l4 m6 s12 w3-margin-bottom">
+          <div class="card w3-card-4">
+            <div class="card-icon">🔧</div>
+            <h3>Тормозная система</h3>
+            <p>Замена дисков и колодок, диагностика. Toyota, BMW, Mercedes-Benz, Ford и другие марки.</p>
+            <div class="card-price">от 2 000 ₽</div>
+          </div>
+        </div>
+        <div class="w3-col l4 m6 s12 w3-margin-bottom">
+          <div class="card w3-card-4">
+            <div class="card-icon">⚙️</div>
+            <h3>Ходовая часть</h3>
+            <p>Амортизаторы, ступичные подшипники, ремень ГРМ. Устраняем стуки и вибрации.</p>
+            <div class="card-price">от 3 000 ₽</div>
+          </div>
+        </div>
+        <div class="w3-col l4 m6 s12 w3-margin-bottom">
+          <div class="card w3-card-4">
+            <div class="card-icon">🛢️</div>
+            <h3>Техническое обслуживание</h3>
+            <p>Замена масла, фильтров, свечей. Плановое ТО для продления ресурса автомобиля.</p>
+            <div class="card-price">от 800 ₽</div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top:1rem">
+        <a href="services.html" class="btn-ghost">Все услуги и цены →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ ПОЧЕМУ МЫ ══ -->
+  <section class="sec sec-main">
+    <h2 class="sec-title">Почему АвтоФикс</h2>
+    <div class="sec-rule"></div>
+    <div class="sec-inner">
+      <div class="w3-row-padding features-row">
+        <div class="w3-col l3 m6 s12 w3-margin-bottom">
+          <div class="feature">
+            <div class="feature-icon">👨‍🔧</div>
+            <h3>Опытные механики</h3>
+            <p>Специалисты с разрядом 4–6. Каждый профессионал в своей специализации.</p>
+          </div>
+        </div>
+        <div class="w3-col l3 m6 s12 w3-margin-bottom">
+          <div class="feature">
+            <div class="feature-icon">🔩</div>
+            <h3>Оригинальные запчасти</h3>
+            <p>Bosch, Brembo, Denso, Febi. Только проверенные детали с гарантией.</p>
+          </div>
+        </div>
+        <div class="w3-col l3 m6 s12 w3-margin-bottom">
+          <div class="feature">
+            <div class="feature-icon">📍</div>
+            <h3>3 удобных филиала</h3>
+            <p>Два в Москве, один в Санкт-Петербурге. Выберите ближайший.</p>
+          </div>
+        </div>
+        <div class="w3-col l3 m6 s12 w3-margin-bottom">
+          <div class="feature">
+            <div class="feature-icon">💳</div>
+            <h3>Прозрачные цены</h3>
+            <p>Фиксированные цены на все работы. Наличные, карта, перевод.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CTA ══ -->
+  <div class="cta">
+    <h2>Готовы записаться?</h2>
+    <p>Выберите удобный филиал — перезвоним в течение 30 минут.</p>
+    <a href="branches.html" class="btn-green">Наши филиалы</a>
+  </div>
+
+  <!-- ══ ФУТЕР ══ -->
+  <footer>
+    <div class="sec-inner">
+      <div class="w3-row-padding">
+        <div class="w3-col l4 m6 s12 w3-margin-bottom">
+          <div class="footer-brand"><span>Авто</span>Фикс</div>
+          <p>Профессиональный ремонт и обслуживание автомобилей.<br />Ежедневно с 8:00 до 20:00.</p>
+        </div>
+        <div class="w3-col l4 m6 s12 w3-margin-bottom">
+          <h4>Навигация</h4>
+          <a href="index.html"    class="flink">Главная</a>
+          <a href="services.html" class="flink">Услуги</a>
+          <a href="parts.html"    class="flink">Запчасти</a>
+          <a href="branches.html" class="flink">Филиалы</a>
+          <a href="about.html"    class="flink">О нас</a>
+        </div>
+        <div class="w3-col l4 m12 s12 w3-margin-bottom">
+          <h4>Наши адреса</h4>
+          <p>
+            📍 Москва, ул. Ленина, 5<br />
+            📍 Москва, ул. Мира, 12<br />
+            📍 Санкт-Петербург, Большой пр., 33
+          </p>
+        </div>
+      </div>
+    </div>
+    <p class="footer-copy">© 2026 АвтоФикс. Все права защищены.</p>
+  </footer>
+
+  <!-- ══ ПЛАВАЮЩАЯ КНОПКА «НАВЕРХ» (w3-btn-floating-large w3-ripple) ══ -->
+  <a href="#" id="toTopBtn" class="w3-btn-floating-large w3-ripple btn-totop" title="Наверх" onclick="scrollToTop(event)">↑</a>
+
+</div>
+</body>
+</html>

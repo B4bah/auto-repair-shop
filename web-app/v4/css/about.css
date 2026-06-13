@@ -1,0 +1,145 @@
+/* ══ МИССИЯ (две колонки) ══ */
+.mission-grid {
+  display: flex; gap: 3rem; align-items: center; flex-wrap: wrap;
+}
+.mission-text { flex: 1; min-width: 260px; }
+.mission-text h2 {
+  text-transform: uppercase; letter-spacing: 1px;
+  font-size: 1.7rem; margin: 0 0 1rem;
+}
+.mission-text p { margin: 0 0 1rem; }
+.mission-text p:last-child { margin: 0; }
+
+.mission-stats {
+  flex: 0 0 280px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+}
+@media (max-width: 700px) {
+  .mission-grid { flex-direction: column; }
+  .mission-stats { flex: none; width: 100%; }
+}
+
+.stat-box {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.2rem 1rem;
+  text-align: center;
+  transition: border-color .2s;
+}
+.stat-box:hover { border-color: var(--green); }
+.stat-num {
+  font-family: 'Oswald', sans-serif;
+  font-size: 2rem; color: var(--green-h);
+  line-height: 1; margin-bottom: .3rem;
+}
+.stat-label { font-size: .78rem; color: var(--subtle); text-transform: uppercase; letter-spacing: .5px; }
+
+/* ══ ТАЙМЛАЙН (история) ══ */
+.timeline { max-width: 700px; margin: 0 auto; }
+.tl-item {
+  display: flex; gap: 1.2rem;
+  padding-bottom: 2rem;
+  position: relative;
+}
+.tl-item:last-child { padding-bottom: 0; }
+.tl-item:last-child .tl-line { display: none; }
+
+.tl-left { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+.tl-dot {
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--green); border: 2px solid var(--bg);
+  box-shadow: 0 0 0 3px var(--green-dim);
+  flex-shrink: 0;
+}
+.tl-line {
+  width: 2px; flex: 1; background: var(--border);
+  margin-top: 6px;
+}
+
+.tl-right { padding-top: 0; }
+.tl-year {
+  font-family: 'Oswald', sans-serif;
+  color: var(--green-h); font-size: .85rem;
+  letter-spacing: 1px; text-transform: uppercase;
+  margin-bottom: .3rem;
+}
+.tl-right h3 {
+  font-size: 1.05rem; text-transform: uppercase;
+  letter-spacing: .5px; margin: 0 0 .4rem;
+}
+.tl-right p { font-size: .9rem; margin: 0; }
+
+/* ══ КАРТОЧКИ МЕХАНИКОВ ══ */
+.mech-card {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  transition: border-color .2s, transform .2s;
+  height: 100%;
+}
+.mech-card:hover { border-color: var(--green); transform: translateY(-3px); }
+
+.mech-avatar {
+  width: 100%; height: 180px;
+  background: var(--bg-3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 4.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.mech-body { padding: 1.3rem 1.2rem; }
+.mech-name {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.15rem; text-transform: uppercase;
+  letter-spacing: 1px; margin: 0 0 .3rem;
+}
+.mech-role { color: var(--muted); font-size: .83rem; margin: 0 0 1rem; }
+
+.mech-tags { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-bottom: 1rem; }
+.tag {
+  background: var(--bg-3); border: 1px solid var(--border);
+  color: var(--muted); font-size: .72rem;
+  padding: 3px 10px; border-radius: 12px;
+}
+
+.mech-rank {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--green-dim);
+  border: 1px solid rgba(46,160,67,.3);
+  border-radius: 6px; padding: 4px 12px;
+  font-size: .8rem; color: var(--green-h);
+  font-family: 'Oswald', sans-serif; letter-spacing: .5px;
+}
+
+/* ══ ВЫРАВНИВАНИЕ ВЫСОТЫ КАРТОЧЕК ══ */
+.mechs-row { display: flex !important; flex-wrap: wrap !important; }
+.mechs-row > [class*="w3-col"] { display: flex !important; flex-direction: column !important; }
+.mechs-row .mech-card { flex: 1 !important; }
+
+/* ══ БРЕНДЫ (полоска) ══ */
+.brands-strip {
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+}
+.brands-strip h3 {
+  font-size: .85rem; text-transform: uppercase;
+  letter-spacing: 2px; color: var(--subtle); margin: 0 0 1.5rem;
+}
+.brands-list {
+  display: flex; flex-wrap: wrap;
+  justify-content: center; gap: 12px;
+}
+.brand-pill {
+  background: var(--bg-2); border: 1px solid var(--border);
+  border-radius: 6px; padding: 8px 20px;
+  font-family: 'Oswald', sans-serif;
+  font-size: .95rem; color: var(--muted);
+  letter-spacing: .5px;
+  transition: border-color .2s, color .2s;
+}
+.brand-pill:hover { border-color: var(--green); color: var(--text); }

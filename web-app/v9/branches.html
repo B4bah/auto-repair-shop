@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Филиалы — АвтоФикс</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Open+Sans:wght@400;600&display=swap" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/branches.css" />
+  <script src="js/main.js" defer></script>
+  <script src="js/branches.js" defer></script>
+</head>
+<body>
+
+<!-- ══ НАВИГАЦИЯ ══ -->
+<nav class="topnav">
+  <a href="index.html" class="nav-brand"><span>Авто</span>Фикс</a>
+  <div class="nav-links">
+    <a href="index.html">Главная</a>
+    <div class="w3-dropdown-hover nav-dd">
+      <a href="services.html" class="nav-link">Услуги ▾</a>
+      <div class="w3-dropdown-content">
+        <a href="services.html#brakes">🔧 Тормозная система</a>
+        <a href="services.html#suspension">⚙️ Ходовая часть</a>
+        <a href="services.html#maintenance">🛢️ Техническое обслуживание</a>
+      </div>
+    </div>
+    <div class="w3-dropdown-hover nav-dd">
+      <a href="parts.html" class="nav-link">Запчасти &#9662;</a>
+      <div class="w3-dropdown-content">
+        <a href="parts.html#brakes">🔧 Тормозная система</a>
+        <a href="parts.html#suspension">⚙️ Ходовая часть</a>
+        <a href="parts.html#maintenance">🛢️ Техническое обслуживание</a>
+      </div>
+    </div>
+    <a href="branches.html" class="active">Филиалы</a>
+    <a href="about.html">О нас</a>
+  </div>
+  <button class="hamburger" onclick="toggleMenu()">☰</button>
+</nav>
+
+<div id="mob-menu">
+  <a href="index.html"    onclick="toggleMenu()">Главная</a>
+  <a href="services.html" onclick="toggleMenu()">Услуги</a>
+  <a href="parts.html"    onclick="toggleMenu()">Запчасти</a>
+  <a href="branches.html" onclick="toggleMenu()">Филиалы</a>
+  <a href="about.html"    onclick="toggleMenu()">О нас</a>
+</div>
+
+<!-- ══ МОДАЛЬНОЕ ОКНО ЗАПИСИ ══ -->
+<article id="modal-form" class="w3-modal">
+  <section class="w3-modal-content w3-animate-zoom">
+    <div class="modal-header">
+      <h3>Записаться на ремонт</h3>
+      <button class="w3-closebtn"
+        onclick="document.getElementById('modal-form').classList.remove('w3-show')">
+        &times;
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="callback-form">
+        <div class="form-row">
+          <div class="form-field">
+            <label>Ваше имя</label>
+            <input type="text" placeholder="Иван Иванов" />
+          </div>
+          <div class="form-field">
+            <label>Телефон</label>
+            <input type="tel" placeholder="+7 (___) ___-__-__" />
+          </div>
+        </div>
+        <div class="form-field">
+          <label>Выберите филиал</label>
+          <select>
+            <option value="">— Выберите —</option>
+            <option value="1">Москва — Центральный (ул. Ленина, 5)</option>
+            <option value="2">Москва — Северный (пр. Мира, 12)</option>
+            <option value="3">Санкт-Петербург (Большой пр., 33)</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Опишите проблему</label>
+          <textarea placeholder="Стук при торможении, загорелась лампа и т.д."></textarea>
+        </div>
+        <button class="btn-green" onclick="handleSubmit()">Отправить заявку</button>
+        <p class="form-note">Перезвоним в течение 30 минут в рабочее время</p>
+        <div id="success-msg">✅ Заявка отправлена! Ожидайте звонка.</div>
+      </div>
+    </div>
+  </section>
+</article>
+
+<div class="page">
+
+  <div class="page-header">
+    <h1>Наши филиалы</h1>
+    <p>Три удобных адреса в Москве и Санкт-Петербурге</p>
+    <button class="btn-green"
+      onclick="document.getElementById('modal-form').classList.add('w3-show')">
+      Записаться онлайн
+    </button>
+  </div>
+
+  <div class="breadcrumb">
+    <a href="index.html">Главная</a> / Филиалы
+  </div>
+
+  <!-- ══ КАРТОЧКИ ФИЛИАЛОВ ══ -->
+  <section class="sec sec-main">
+    <div class="sec-inner">
+      <div class="w3-row-padding branches-row">
+
+        <!-- Филиал 1 -->
+        <div class="w3-col l4 m6 s12 w3-margin-bottom">
+          <div class="branch-card">
+            <div class="branch-map">
+              <iframe
+                src="https://www.google.com/maps?q=Москва,+ул.+Ленина,+5&output=embed"
+                loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                title="Карта: Москва, ул. Ленина, 5"></iframe>
+              <a href="https://maps.google.com/?q=Москва+ул+Ленина+5"
+                 target="_blank" class="map-label">Открыть на карте ↗</a>
+            </div>
+            <div class="branch-body">
+              <div class="branch-num">Филиал № 1</div>
+              <h3>Москва — Центральный</h3>
+              <ul class="branch-info">
+                <li>
+                  <span class="ico">📍</span>
+                  <span><span class="lbl">Адрес</span><span class="val">ул. Ленина, 5, Москва</span></span>
+                </li>
+                <li>
+                  <span class="ico">📞</span>
+                  <span><span class="lbl">Телефон</span><span class="val">+7 (495) 123-45-67</span></span>
+                </li>
+                <li>
+                  <span class="ico">🕗</span>
+                  <span><span class="lbl">Режим работы</span><span class="val">Пн–Вс 8:00 — 20:00</span></span>
+                </li>
+                <li>
+                  <span class="ico">🚇</span>
+                  <span><span class="lbl">Метро</span><span class="val">Охотный ряд, 5 мин пешком</span></span>
+                </li>
+                <li>
+                  <span class="ico">🟢</span>
+                  <span>
+                    <div class="branch-status">
+                      <span class="dot-green"></span>
+                      <span class="val">Сейчас открыто</span>
+                    </div>
+                  </span>
+                </li>
+              </ul>
+              <a href="tel:+74951234567" class="btn-green">📞 Позвонить</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Филиал 2 -->
+        <div class="w3-col l4 m6 s12 w3-margin-bottom">
+          <div class="branch-card">
+            <div class="branch-map">
+              <iframe
+                src="https://www.google.com/maps?q=Москва,+пр.+Мира,+12&output=embed"
+                loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                title="Карта: Москва, пр. Мира, 12"></iframe>
+              <a href="https://maps.google.com/?q=Москва+ул+Мира+12"
+                 target="_blank" class="map-label">Открыть на карте ↗</a>
+            </div>
+            <div class="branch-body">
+              <div class="branch-num">Филиал № 2</div>
+              <h3>Москва — Северный</h3>
+              <ul class="branch-info">
+                <li>
+                  <span class="ico">📍</span>
+                  <span><span class="lbl">Адрес</span><span class="val">пр. Мира, 12, Москва</span></span>
+                </li>
+                <li>
+                  <span class="ico">📞</span>
+                  <span><span class="lbl">Телефон</span><span class="val">+7 (495) 234-56-78</span></span>
+                </li>
+                <li>
+                  <span class="ico">🕗</span>
+                  <span><span class="lbl">Режим работы</span><span class="val">Пн–Вс 8:00 — 20:00</span></span>
+                </li>
+                <li>
+                  <span class="ico">🚇</span>
+                  <span><span class="lbl">Метро</span><span class="val">ВДНХ, 7 мин пешком</span></span>
+                </li>
+                <li>
+                  <span class="ico">🟢</span>
+                  <span>
+                    <div class="branch-status">
+                      <span class="dot-green"></span>
+                      <span class="val">Сейчас открыто</span>
+                    </div>
+                  </span>
+                </li>
+              </ul>
+              <a href="tel:+74952345678" class="btn-green">📞 Позвонить</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Филиал 3 -->
+        <div class="w3-col l4 m6 s12 w3-margin-bottom">
+          <div class="branch-card">
+            <div class="branch-map">
+              <iframe
+                src="https://www.google.com/maps?q=Санкт-Петербург,+Большой+проспект+В.О.,+33&output=embed"
+                loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                title="Карта: Санкт-Петербург, Большой пр. В.О., 33"></iframe>
+              <a href="https://maps.google.com/?q=Санкт-Петербург+Большой+проспект+33"
+                 target="_blank" class="map-label">Открыть на карте ↗</a>
+            </div>
+            <div class="branch-body">
+              <div class="branch-num">Филиал № 3</div>
+              <h3>Санкт-Петербург</h3>
+              <ul class="branch-info">
+                <li>
+                  <span class="ico">📍</span>
+                  <span><span class="lbl">Адрес</span><span class="val">Большой пр. В.О., 33, СПб</span></span>
+                </li>
+                <li>
+                  <span class="ico">📞</span>
+                  <span><span class="lbl">Телефон</span><span class="val">+7 (812) 345-67-89</span></span>
+                </li>
+                <li>
+                  <span class="ico">🕗</span>
+                  <span><span class="lbl">Режим работы</span><span class="val">Пн–Вс 9:00 — 21:00</span></span>
+                </li>
+                <li>
+                  <span class="ico">🚇</span>
+                  <span><span class="lbl">Метро</span><span class="val">Василеостровская, 3 мин</span></span>
+                </li>
+                <li>
+                  <span class="ico">🟢</span>
+                  <span>
+                    <div class="branch-status">
+                      <span class="dot-green"></span>
+                      <span class="val">Сейчас открыто</span>
+                    </div>
+                  </span>
+                </li>
+              </ul>
+              <a href="tel:+78123456789" class="btn-green">📞 Позвонить</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ ФУТЕР ══ -->
+  <footer>
+    <div class="sec-inner">
+      <div class="w3-row-padding">
+        <div class="w3-col l4 m6 s12 w3-margin-bottom">
+          <div class="footer-brand"><span>Авто</span>Фикс</div>
+          <p>Профессиональный ремонт и обслуживание автомобилей.<br />Ежедневно с 8:00 до 20:00.</p>
+        </div>
+        <div class="w3-col l4 m6 s12 w3-margin-bottom">
+          <h4>Навигация</h4>
+          <a href="index.html"    class="flink">Главная</a>
+          <a href="services.html" class="flink">Услуги</a>
+          <a href="parts.html"    class="flink">Запчасти</a>
+          <a href="branches.html" class="flink">Филиалы</a>
+          <a href="about.html"    class="flink">О нас</a>
+        </div>
+        <div class="w3-col l4 m12 s12 w3-margin-bottom">
+          <h4>Наши адреса</h4>
+          <p>
+            📍 Москва, ул. Ленина, 5<br />
+            📍 Москва, ул. Мира, 12<br />
+            📍 Санкт-Петербург, Большой пр., 33
+          </p>
+        </div>
+      </div>
+    </div>
+    <p class="footer-copy">© 2026 АвтоФикс. Все права защищены.</p>
+  </footer>
+
+  <!-- ══ ПЛАВАЮЩАЯ КНОПКА «НАВЕРХ» (w3-btn-floating-large w3-ripple) ══ -->
+  <a href="#" id="toTopBtn" class="w3-btn-floating-large w3-ripple btn-totop" title="Наверх" onclick="scrollToTop(event)">↑</a>
+
+</div>
+</body>
+</html>

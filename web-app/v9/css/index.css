@@ -1,0 +1,74 @@
+/* ══ HERO (только на главной) ══ */
+.hero {
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  min-height: 520px;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; padding: 5rem 1.5rem;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 50% at 50% 0%, var(--green-dim), transparent 70%);
+  pointer-events: none;
+}
+.hero-inner { position: relative; max-width: 660px; }
+
+.badge {
+  display: inline-block;
+  background: rgba(35,134,54,.12);
+  color: var(--green-h);
+  border: 1px solid rgba(46,160,67,.35);
+  border-radius: 20px;
+  padding: 4px 14px; font-size: .78rem;
+  letter-spacing: 2px; text-transform: uppercase;
+  margin-bottom: 1.4rem;
+}
+.hero h1 {
+  font-size: clamp(1.9rem, 5.5vw, 3.3rem);
+  text-transform: uppercase; letter-spacing: 2px;
+  line-height: 1.15; margin: 0 0 1.2rem;
+}
+.hero p { font-size: 1.05rem; margin: 0 0 2.4rem; }
+.btn-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+/* ══ КАРТОЧКИ УСЛУГ (только на главной) ══ */
+.card {
+  background: var(--bg-2) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 8px; padding: 2rem 1.5rem;
+  text-align: center; height: 100%;
+  transition: border-color .2s, transform .2s;
+  box-shadow: none !important;
+}
+.card:hover { border-color: var(--green) !important; transform: translateY(-3px); }
+.card-icon { font-size: 2.4rem; margin-bottom: .8rem; }
+.card h3 {
+  text-transform: uppercase; font-size: 1rem;
+  margin: .4rem 0 .8rem; color: var(--text);
+}
+.card p { font-size: .9rem; margin: 0 0 1rem; }
+.card-price { color: var(--green-h); font-weight: 600; font-size: 1rem; }
+
+/* ══ ПРЕИМУЩЕСТВА (только на главной) ══ */
+.feature {
+  text-align: center; padding: 1.5rem 1rem;
+  border-radius: 8px; transition: background .2s;
+}
+.feature:hover { background: var(--bg-3); }
+.feature-icon { font-size: 2.2rem; margin-bottom: .6rem; }
+.feature h3 {
+  text-transform: uppercase; font-size: .88rem;
+  margin: .4rem 0 .6rem; color: var(--text);
+}
+.feature p { font-size: .85rem; margin: 0; }
+
+/* ══ ВЫРАВНИВАНИЕ ВЫСОТЫ КАРТОЧЕК ПРЕИМУЩЕСТВ ══ */
+.features-row { display: flex !important; flex-wrap: wrap !important; }
+.features-row > [class*="w3-col"] { display: flex !important; flex-direction: column !important; }
+.features-row .feature { flex: 1 !important; height: 100%; }
+
+/* ══ ВЫРАВНИВАНИЕ ВЫСОТЫ КАРТОЧЕК (только на главной) ══ */
+.cards-row { display: flex !important; flex-wrap: wrap !important; }
+.cards-row > [class*="w3-col"] { display: flex !important; flex-direction: column !important; }
+.cards-row .card { flex: 1 !important; }

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>О нас — АвтоФикс</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Open+Sans:wght@400;600&display=swap"/>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/about.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+
+<!-- ══ НАВИГАЦИЯ ══ -->
+<nav class="topnav">
+  <a href="index.html" class="nav-brand"><span>Авто</span>Фикс</a>
+  <div class="nav-links">
+    <a href="index.html">Главная</a>
+    <div class="w3-dropdown-hover nav-dd">
+      <a href="services.html" class="nav-link">Услуги ▾</a>
+      <div class="w3-dropdown-content">
+        <a href="services.html#brakes">🔧 Тормозная система</a>
+        <a href="services.html#suspension">⚙️ Ходовая часть</a>
+        <a href="services.html#maintenance">🛢️ Техническое обслуживание</a>
+      </div>
+    </div>
+    <a href="parts.html">Запчасти</a>
+    <a href="branches.html">Филиалы</a>
+    <a href="about.html" class="active">О нас</a>
+  </div>
+  <button class="hamburger" onclick="toggleMenu()">☰</button>
+</nav>
+
+<div id="mob-menu">
+  <a href="index.html"    onclick="toggleMenu()">Главная</a>
+  <a href="services.html" onclick="toggleMenu()">Услуги</a>
+  <a href="parts.html"    onclick="toggleMenu()">Запчасти</a>
+  <a href="branches.html" onclick="toggleMenu()">Филиалы</a>
+  <a href="about.html"    onclick="toggleMenu()">О нас</a>
+</div>
+
+<div class="page">
+
+  <!-- ══ PAGE HEADER ══ -->
+  <div class="page-header">
+    <h1>О компании</h1>
+    <p>Профессиональный ремонт с 2019 года</p>
+  </div>
+
+  <div class="breadcrumb">
+    <a href="index.html">Главная</a> / О нас
+  </div>
+
+  <!-- ══ МИССИЯ ══ -->
+  <section class="sec sec-main">
+    <div class="sec-inner">
+      <div class="mission-grid">
+
+        <div class="mission-text">
+          <h2>Наша миссия</h2>
+          <p>АвтоФикс — это сеть автомастерских, которая работает по единому стандарту качества во всех трёх филиалах. Мы убеждены: ремонт автомобиля не должен быть стрессом. Наша задача — сделать его прозрачным, быстрым и предсказуемым.</p>
+          <p>С 2019 года мы обслуживаем владельцев автомобилей в Москве и Санкт-Петербурге. За это время через наши мастерские прошло более 12 000 автомобилей, и каждый клиент получил честный счёт и гарантию на выполненные работы.</p>
+          <p>Мы не навязываем лишних работ. Если деталь можно восстановить — восстановим. Если нужна замена — объясним зачем и покажем снятую деталь.</p>
+        </div>
+
+        <div class="mission-stats">
+          <div class="stat-box">
+            <div class="stat-num">5+</div>
+            <div class="stat-label">лет на рынке</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">3</div>
+            <div class="stat-label">филиала</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">12K+</div>
+            <div class="stat-label">клиентов</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">98%</div>
+            <div class="stat-label">довольных</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ ИСТОРИЯ ══ -->
+  <section class="sec sec-alt">
+    <div class="sec-inner">
+      <h2 class="sec-title">История компании</h2>
+      <div class="sec-rule"></div>
+
+      <div class="timeline">
+
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
+          <div class="tl-right">
+            <div class="tl-year">2019</div>
+            <h3>Открытие первого филиала</h3>
+            <p>На ул. Ленина в Москве открылась первая мастерская АвтоФикс. Три механика, один подъёмник и принцип «только честный ремонт».</p>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
+          <div class="tl-right">
+            <div class="tl-year">2021</div>
+            <h3>Второй филиал в Москве</h3>
+            <p>Высокий спрос потребовал расширения. На пр. Мира открылся Северный филиал с расширенным парком оборудования и специализацией на ходовой части.</p>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
+          <div class="tl-right">
+            <div class="tl-year">2022</div>
+            <h3>Партнёрство с поставщиками</h3>
+            <p>Заключены прямые договоры с Bosch, Brembo, Denso и Febi Bilstein. Это позволило сократить сроки поставки запчастей до 1–3 дней и снизить цены.</p>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
+          <div class="tl-right">
+            <div class="tl-year">2024</div>
+            <h3>Выход в Санкт-Петербург</h3>
+            <p>Открыт третий филиал на Большом проспекте В.О. АвтоФикс вышел за пределы Москвы и стал федеральной сетью автомастерских.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ КОМАНДА ══ -->
+  <section class="sec sec-main">
+    <div class="sec-inner">
+      <h2 class="sec-title">Наши механики</h2>
+      <div class="sec-rule"></div>
+
+      <div class="w3-row-padding mechs-row">
+
+        <div class="w3-col l3 m6 s12 w3-margin-bottom">
+          <div class="mech-card">
+            <div class="mech-avatar">👨‍🔧</div>
+            <div class="mech-body">
+              <div class="mech-name">Дмитрий Козлов</div>
+              <div class="mech-role">Старший механик · Москва (Центр)</div>
+              <div class="mech-tags">
+                <span class="tag">Тормозная система</span>
+                <span class="tag">Диагностика</span>
+              </div>
+              <div class="mech-rank">⭐ Разряд 6</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="w3-col l3 m6 s12 w3-margin-bottom">
+          <div class="mech-card">
+            <div class="mech-avatar">👨‍🔧</div>
+            <div class="mech-body">
+              <div class="mech-name">Сергей Морозов</div>
+              <div class="mech-role">Механик · Москва (Север)</div>
+              <div class="mech-tags">
+                <span class="tag">Ходовая часть</span>
+                <span class="tag">ГРМ</span>
+              </div>
+              <div class="mech-rank">⭐ Разряд 5</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="w3-col l3 m6 s12 w3-margin-bottom">
+          <div class="mech-card">
+            <div class="mech-avatar">👨‍🔧</div>
+            <div class="mech-body">
+              <div class="mech-name">Виктор Соколов</div>
+              <div class="mech-role">Механик · Санкт-Петербург</div>
+              <div class="mech-tags">
+                <span class="tag">ТО</span>
+                <span class="tag">Подвеска</span>
+              </div>
+              <div class="mech-rank">⭐ Разряд 5</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="w3-col l3 m6 s12 w3-margin-bottom">
+          <div class="mech-card">
+            <div class="mech-avatar">👨‍🔧</div>
+            <div class="mech-body">
+              <div class="mech-name">Алексей Новиков</div>
+              <div class="mech-role">Механик · Москва (Центр)</div>
+              <div class="mech-tags">
+                <span class="tag">Двигатель</span>
+                <span class="tag">Электрика</span>
+              </div>
+              <div class="mech-rank">⭐ Разряд 4</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ БРЕНДЫ ══ -->
+  <div class="brands-strip">
+    <h3>Работаем с запчастями от</h3>
+    <div class="brands-list">
+      <div class="brand-pill">Bosch</div>
+      <div class="brand-pill">Brembo</div>
+      <div class="brand-pill">Denso</div>
+      <div class="brand-pill">Febi Bilstein</div>
+      <div class="brand-pill">KYB</div>
+      <div class="brand-pill">Sachs</div>
+      <div class="brand-pill">SKF</div>
+      <div class="brand-pill">Gates</div>
+      <div class="brand-pill">NGK</div>
+      <div class="brand-pill">Mann-Filter</div>
+      <div class="brand-pill">TRW</div>
+    </div>
+  </div>
+
+  <!-- ══ ФУТЕР ══ -->
+  <footer>
+    <div class="sec-inner">
+      <div class="w3-row-padding">
+        <div class="w3-col l4 m6 s12 w3-margin-bottom">
+          <div class="footer-brand"><span>Авто</span>Фикс</div>
+          <p>Профессиональный ремонт и обслуживание автомобилей.<br>Ежедневно с 8:00 до 20:00.</p>
+        </div>
+        <div class="w3-col l4 m6 s12 w3-margin-bottom">
+          <h4>Навигация</h4>
+          <a href="index.html"    class="flink">Главная</a>
+          <a href="services.html" class="flink">Услуги</a>
+          <a href="parts.html"    class="flink">Запчасти</a>
+          <a href="branches.html" class="flink">Филиалы</a>
+          <a href="about.html"    class="flink">О нас</a>
+        </div>
+        <div class="w3-col l4 m12 s12 w3-margin-bottom">
+          <h4>Наши адреса</h4>
+          <p>
+            📍 Москва, ул. Ленина, 5<br>
+            📍 Москва, ул. Мира, 12<br>
+            📍 Санкт-Петербург, Большой пр., 33
+          </p>
+        </div>
+      </div>
+    </div>
+    <p class="footer-copy">© 2026 АвтоФикс. Все права защищены.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
