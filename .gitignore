@@ -1,0 +1,34 @@
+# =====================
+# Python (Backend)
+# =====================
+web-app/backend/.venv/
+web-app/backend/__pycache__/
+web-app/backend/*.pyc
+web-app/backend/.env
+web-app/backend/.pytest_cache/
+web-app/backend/.mypy_cache/
+
+# =====================
+# JavaScript / React (Frontend)
+# =====================
+web-app/frontend/node_modules/
+web-app/frontend/.env
+web-app/frontend/dist/
+web-app/frontend/build/
+web-app/frontend/.vite/
+
+# =====================
+# Docker (Ignore volume mounts, if any)
+# =====================
+web-app/postgres_data/
+
+# =====================
+# OS & IDE Crap
+# =====================
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.swp
+.idea/
+.vscode/
